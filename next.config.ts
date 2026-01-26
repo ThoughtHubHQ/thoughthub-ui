@@ -20,6 +20,10 @@ output: "standalone",
         protocol: "https",
         hostname: "cdn.thoughthubhq.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.facebook.com",
+      },
     ],
   },
 };
