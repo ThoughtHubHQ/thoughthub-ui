@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       {/* Demo Screen */}
-      <section className="bg-[#e7eacd] flex justify-center items-center min-h-screen">
+      <section className="bg-[#e7eacd] flex-col flex justify-center items-center min-h-screen">
         <Link href="https://thoughthubhq.com">
           <Image
             src="/logo/th-logo.png"
