@@ -1,16 +1,11 @@
 {
-  "name": "ThoughtHub - Where Thoughts Take Shape",
+  "name": "ThoughtHub",
   "short_name": "ThoughtHub",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#e7eacd",
   "theme_color": "#e7eacd",
   "icons": [
-    {
-      "src": "/logo/th-logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
     {
       "src": "/logo/th-logo.png",
       "sizes": "512x512",
