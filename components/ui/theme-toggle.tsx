@@ -5,8 +5,13 @@ import { Sun, Moon, Laptop } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { JSX } from "react";
+import clsx from "clsx";
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+  className?: string;
+}
+
+export function ThemeToggle({ className }: ThemeToggleProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
@@ -20,7 +25,12 @@ export function ThemeToggle() {
   ];
 
   return (
-    <div className="inline-flex rounded-xl border border-border bg-background p-1">
+    <div
+      className={clsx(
+        "inline-flex rounded-xl border p-1 bg-background",
+        className,
+      )}
+    >
       {themes.map((t) => {
         const isActive = theme === t.name;
         return (
@@ -41,4 +51,4 @@ export function ThemeToggle() {
       })}
     </div>
   );
-}
+};

@@ -14,7 +14,7 @@ export default function Home() {
           &copy; {new Date().getFullYear()} ThoughtHub{" "}
           <VerifiedSign className="text-[#075eea]" size={17}/>
         </span>
-      <ThemeToggle/>
+      <ThemeToggle className="bg-transparent"/>
       </section>
     </div>
   );
