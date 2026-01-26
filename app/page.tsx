@@ -15,6 +15,7 @@ export default function Home() {
             className="animate-pulse duration-500 hover:animate-none transition-all aspect-square object-cover"
           />
         </Link>
+        &copy; {new Date().getFullYear()} ThoughtHub
       </section>
     </div>
   );
