@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ThoughtHub',
+  title: 'ThoughtHub - Where Thoughts Take Shape',
   description:
     'Innovative solutions for Web & Mobile apps, Creative Design & Editing, Notion Workspace, IT & Network Consultancy.',
   openGraph: {
