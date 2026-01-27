@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "ThoughtHub - Where Thoughts Take Shape",
   description:
     "Innovative solutions for Web & Mobile apps, Creative Design & Editing, Notion Workspace, IT & Network Consultancy.",
+  manifest: "/manifest.json",
   openGraph: {
     title: "ThoughtHub",
     description:
