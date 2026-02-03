@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ThoughtHub",
     description:
-      "Where Thoughts Take Shape – Innovative solutions for Web & Mobile apps, Creative Design & Editing, Notion Workspace, IT & Network Consultancy.",
+      "Where Thoughts Take Shape – Innovative solution for Web & Mobile apps, Creative Design & Editing, Notion Workspace, IT & Network Consultancy.",
     type: "website",
     url: "https://thoughthubhq.com",
     siteName: "ThoughtHub",
