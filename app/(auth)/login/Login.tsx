@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Lock, Mail, Loader2, Hash, ArrowRight } from "lucide-react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { roxborough } from "@/lib/font";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -29,7 +30,6 @@ const formSchema = z.object({
 
 export default function Login() {
   const [isHovered, setIsHovered] = useState(false);
-  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -51,34 +51,35 @@ export default function Login() {
   }
 
   return (
-    <div 
+    <div
       onMouseMove={handleMouseMove}
       className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-zinc-950 overflow-hidden selection:bg-[#e7eacd] selection:text-black"
-    >        
-
+    >
       <motion.div
-        className="pointer-events-none absolute z-30 w-150 h-150 rounded-full blur-[120px] opacity-20 lg:opacity-30"
+        className="pointer-events-none absolute z-30 w-90 h-90 hidden lg:block rounded-full blur-[120px] opacity-20 lg:opacity-30"
         style={{
           left: springX,
           top: springY,
           translateX: "-50%",
           translateY: "-50%",
-          background: "radial-gradient(circle, #e7eacd 0%, #775d14 50%, transparent 100%)",
+          background:
+            "radial-gradient(circle, #e7eacd 0%, #775d14 50%, transparent 100%)",
         }}
       />
 
       <div className="relative hidden lg:flex flex-col justify-center px-24 bg-[#e7eacd] overflow-hidden">
+        {/* bg dot */}
         <div
           className="absolute inset-0 opacity-[0.15]"
           style={{
             backgroundImage: "radial-gradient(#000 0.8px, transparent 0.8px)",
-            backgroundSize: "24px 24px",
+            backgroundSize: "10px 10px",
           }}
         />
-        
+
         <div className="absolute top-[-10%] right-[-10%] w-125 h-125 bg-[#dce1af] rounded-full blur-3xl opacity-50 animate-pulse" />
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -94,10 +95,14 @@ export default function Login() {
               priority
             />
           </div>
-          
+
           <div className="space-y-4">
-            <h1 className="text-7xl font-bold tracking-tight text-black leading-none">
-              ThoughtHub <br />
+            <h1
+              className={
+                "text-7xl font-bold tracking-tight text-black leading-none"
+              }
+            >
+              <span className={roxborough.className}>ThoughtHub</span> <br />
               <span className="text-[#775d14] inline-block mt-2">HQ</span>
             </h1>
             <div className="h-1 w-20 bg-black rounded-full" />
@@ -107,8 +112,8 @@ export default function Login() {
           </div>
 
           <p className="max-w-md text-lg text-black/60 leading-relaxed font-medium">
-            Innovative solutions for Web & Mobile Development, Creative & UI/UX Design,
-            Notion Workspace setup, and high-end IT Consultancy.
+            Innovative solutions for Web & Mobile Development, Creative & UI/UX
+            Design, Notion Workspace setup, and high-end IT Consultancy.
           </p>
         </motion.div>
 
@@ -131,16 +136,17 @@ export default function Login() {
         >
           {/* Mobile Logo */}
           <div className="lg:hidden flex justify-center mb-8">
-            <div className="bg-zinc-900/50 border border-zinc-800 p-4 rounded-3xl backdrop-blur-xl shadow-2xl">
+            <div className="bg-zinc-900/50 border border-zinc-800 p-3 rounded-xl backdrop-blur-xl shadow-2xl">
               <Image
                 src="http://cdn.thoughthubhq.com/th-vector-logo.svg"
                 alt="Logo"
-                width={48}
-                height={48}
-                />
-                </div>
+                width={100}
+                height={100}
+                className="rounded-xl"
+              />
             </div>
-          <Card className="bg-zinc-900/40 border-zinc-800/50 backdrop-blur-2xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden">
+          </div>
+          <Card className="bg-zinc-900/70 border-zinc-800/50 backdrop-blur-2xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden">
             <CardContent className="px-8">
               <div className="mb-10">
                 <h2 className="text-3xl font-bold text-white tracking-tight">
@@ -162,7 +168,7 @@ export default function Login() {
                     render={({ field }) => (
                       <FormItem className="space-y-2">
                         <FormLabel className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] ml-1">
-                          Enterprise ID
+                          Employee ID
                         </FormLabel>
                         <FormControl>
                           <div className="group relative">
@@ -170,7 +176,8 @@ export default function Login() {
                             <Input
                               placeholder="TH-001"
                               {...field}
-                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all focus-visible:ring-1 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
+                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all
+                               focus-visible:ring-3 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
                             />
                           </div>
                         </FormControl>
@@ -191,9 +198,10 @@ export default function Login() {
                           <div className="group relative">
                             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
                             <Input
-                              placeholder="name@thought-hub.com"
+                              placeholder="name@thoughthubhq.com"
                               {...field}
-                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all focus-visible:ring-1 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
+                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all 
+                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
                             />
                           </div>
                         </FormControl>
@@ -217,7 +225,8 @@ export default function Login() {
                               type="password"
                               placeholder="••••••••"
                               {...field}
-                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all focus-visible:ring-1 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
+                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all 
+                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
                             />
                           </div>
                         </FormControl>
@@ -241,7 +250,10 @@ export default function Login() {
                         <Loader2 className="h-5 w-5 animate-spin" />
                       ) : (
                         <span className="flex items-center gap-2">
-                          Access Workspace <ArrowRight className={`h-4 w-4 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
+                          Access Workspace{" "}
+                          <ArrowRight
+                            className={`h-4 w-4 transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`}
+                          />
                         </span>
                       )}
                     </Button>
@@ -251,16 +263,9 @@ export default function Login() {
             </CardContent>
           </Card>
           <footer className="flex flex-col items-center gap-4">
-            <p className="text-zinc-600 text-[10px] tracking-[0.3em] uppercase font-bold">
-              © {new Date().getFullYear()} ThoughtHub Global
+            <p className="text-muted-foreground text-[10px] tracking-[0.3em] uppercase font-bold">
+              © {new Date().getFullYear()} ThoughtHub | All rights reserved
             </p>
-            <div className="flex gap-6">
-              {['Privacy', 'Security', 'Terms'].map((item) => (
-                <a key={item} href="#" className="text-zinc-700 hover:text-zinc-400 text-[10px] uppercase tracking-widest transition-colors font-bold">
-                  {item}
-                </a>
-              ))}
-            </div>
           </footer>
         </motion.div>
       </div>

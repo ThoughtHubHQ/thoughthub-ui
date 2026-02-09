@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { Home, Terminal, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, Terminal, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
@@ -23,7 +23,7 @@ export default function NotFound() {
       className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-zinc-950 overflow-hidden selection:bg-[#e7eacd] selection:text-black"
     >
       <motion.div
-        className="pointer-events-none absolute z-30 w-150 h-150 rounded-full blur-[120px] opacity-20 lg:opacity-25"
+        className="pointer-events-none absolute z-30 w-80 h-80 rounded-full blur-[120px] opacity-20 lg:opacity-25"
         style={{
           left: springX,
           top: springY,
@@ -39,7 +39,7 @@ export default function NotFound() {
           className="absolute inset-0 opacity-[0.1]"
           style={{
             backgroundImage: "radial-gradient(#000 0.8px, transparent 0.8px)",
-            backgroundSize: "24px 24px",
+            backgroundSize: "10px 10px",
           }}
         />
 
@@ -52,7 +52,7 @@ export default function NotFound() {
             Error Code: 404
           </span>
           <h1 className="text-[12rem] font-black text-black leading-none tracking-tighter select-none">
-            Lost.
+            Lost ?
           </h1>
           <p className="text-2xl text-black/70 font-medium max-w-sm mt-4">
             Even the most structured thoughts occasionally wander off the grid.
@@ -61,11 +61,11 @@ export default function NotFound() {
 
         <div className="absolute bottom-12 left-24 flex items-center gap-2 text-black/30 text-[10px] font-bold uppercase tracking-widest">
           <Terminal className="h-3 w-3" />
-          <span>ThoughtHub Protocol // Path_Not_Defined</span>
+          <span>ThoughtHub // Path_Not_Defined</span>
         </div>
       </div>
 
-      {/* RIGHT SECTION: Navigation & Recovery */}
+      {/* Navigation Button */}
       <div className="relative flex items-center justify-center p-6 sm:p-12 z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -94,18 +94,18 @@ export default function NotFound() {
               >
                 <div className="flex items-center gap-4">
                   <div className="p-2 bg-zinc-800 rounded-lg">
-                    <Home className="h-5 w-5 text-zinc-400 group-hover:text-[#e7eacd]" />
+                    <Home className="h-5 w-5 text-zinc-400 group-hover:text-white" />
                   </div>
                   <div className="text-left">
-                    <div className="text-sm font-bold uppercase tracking-wide text-muted-foreground">
+                    <div className="text-sm font-bold uppercase tracking-wide text-muted-foreground group-hover:text-white">
                       Return Home
                     </div>
-                    <div className="text-[11px] text-zinc-500 group-hover:text-black/60">
+                    <div className="text-[11px] text-zinc-500 group-hover:text-muted-foreground">
                       Back to safety
                     </div>
                   </div>
                 </div>
-                <ChevronRight className="h-5 w-5 rotate-180" />
+                <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground group-hover:text-white" />
               </Button>
             </Link>
             <Button
@@ -115,13 +115,13 @@ export default function NotFound() {
             >
               <div className="flex items-center gap-4">
                 <div className="p-2 bg-zinc-800 rounded-lg">
-                  <ChevronLeft className="h-5 w-5 text-zinc-400 group-hover:text-[#e7eacd]" />
+                  <ChevronLeft className="h-5 w-5 text-zinc-400 group-hover:text-white" />
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold uppercase tracking-wide text-muted-foreground">
+                  <div className="text-sm font-bold uppercase tracking-wide text-muted-foreground group-hover:text-white">
                     Go Back
                   </div>
-                  <div className="text-[11px] text-zinc-500 group-hover:text-black/60">
+                  <div className="text-[11px] text-zinc-500 group-hover:text-muted-foreground">
                     Find your way back
                   </div>
                 </div>
