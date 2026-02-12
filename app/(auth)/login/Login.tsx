@@ -214,7 +214,7 @@ export default function Login() {
                     control={form.control}
                     name="password"
                     render={({ field }) => (
-                      <FormItem className="space-y-2">
+                      <FormItem className="space-y-2 mb-9">
                         <FormLabel className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] ml-1">
                           Password
                         </FormLabel>
@@ -242,7 +242,7 @@ export default function Login() {
                     <Button
                       type="submit"
                       disabled={form.formState.isSubmitting}
-                      className="w-full bg-[#e7eacd] hover:bg-white text-black font-extrabold h-12 mt-6 transition-colors shadow-[0_0_20px_rgba(231,234,205,0.2)]"
+                      className="w-full bg-[#e7eacd] hover:bg-white text-black font-extrabold h-12 transition-colors shadow-[0_0_20px_rgba(231,234,205,0.2)]"
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
                     >
@@ -263,7 +263,7 @@ export default function Login() {
             </CardContent>
           </Card>
           <footer className="flex flex-col items-center gap-4">
-            <p className="text-muted-foreground text-[10px] tracking-[0.3em] uppercase font-bold">
+            <p className="text-muted-foreground text-[10px] tracking-[0.3em] font-bold">
               © {new Date().getFullYear()} ThoughtHub | All rights reserved
             </p>
           </footer>
