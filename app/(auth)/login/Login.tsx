@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -55,8 +55,9 @@ export default function Login() {
       onMouseMove={handleMouseMove}
       className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-zinc-950 overflow-hidden selection:bg-[#e7eacd] selection:text-black"
     >
+      {/* Spotlight */}
       <motion.div
-        className="pointer-events-none absolute z-30 w-90 h-90 hidden lg:block rounded-full blur-[120px] opacity-20 lg:opacity-30"
+        className="pointer-events-none absolute z-30 w-100 h-100 hidden lg:block rounded-full blur-[100px] opacity-20 lg:opacity-25"
         style={{
           left: springX,
           top: springY,
@@ -67,92 +68,86 @@ export default function Login() {
         }}
       />
 
-      <div className="relative hidden lg:flex flex-col justify-center px-24 bg-[#e7eacd] overflow-hidden">
-        {/* bg dot */}
+      <div className="relative hidden lg:flex flex-col justify-center px-12 xl:px-24 bg-[#e7eacd] overflow-hidden">
+        {/* BG Dot */}
         <div
-          className="absolute inset-0 opacity-[0.15]"
+          className="absolute inset-0 opacity-[0.1]"
           style={{
             backgroundImage: "radial-gradient(#000 0.8px, transparent 0.8px)",
             backgroundSize: "10px 10px",
           }}
         />
 
-        <div className="absolute top-[-10%] right-[-10%] w-125 h-125 bg-[#dce1af] rounded-full blur-3xl opacity-50 animate-pulse" />
-
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 space-y-8"
+          className="relative z-10 space-y-6"
         >
-          <div className="bg-black/10 w-fit p-4 rounded-2xl backdrop-blur-sm border border-black/5">
+          <div className="bg-black/10 w-fit p-3 rounded-2xl backdrop-blur-sm border border-black/5">
             <Image
               src="http://cdn.thoughthubhq.com/th-vector-logo.svg"
               alt="ThoughtHub Logo"
-              width={80}
-              height={80}
-              className="rounded-lg shadow-2xl"
+              width={70}
+              height={70}
+              className="rounded-lg shadow-xl"
               priority
             />
           </div>
 
-          <div className="space-y-4">
-            <h1
-              className={
-                "text-7xl font-bold tracking-tight text-black leading-none"
-              }
-            >
+          <div className="space-y-3">
+            <h1 className="text-5xl xl:text-6xl font-bold tracking-tight text-black leading-none">
               <span className={roxborough.className}>ThoughtHub</span> <br />
-              <span className="text-[#775d14] inline-block mt-2">HQ</span>
+              <span className="text-[#775d14] inline-block mt-1">HQ</span>
             </h1>
-            <div className="h-1 w-20 bg-black rounded-full" />
-            <p className="text-2xl text-black/80 font-semibold tracking-tight">
+            <div className="h-1 w-16 bg-black rounded-full" />
+            <p className="text-lg xl:text-xl text-black/80 font-semibold tracking-tight">
               Where Thoughts Take Shape
             </p>
           </div>
 
-          <p className="max-w-md text-lg text-black/60 leading-relaxed font-medium">
+          <p className="max-w-md text-sm xl:text-base text-black/60 leading-relaxed font-medium">
             Innovative solutions for Web & Mobile Development, Creative & UI/UX
             Design, Notion Workspace setup, and high-end IT Consultancy.
           </p>
         </motion.div>
 
-        <div className="absolute bottom-12 left-24 flex items-center gap-4 text-black/40 text-xs font-bold uppercase tracking-[0.3em]">
+        <div className="absolute bottom-10 left-12 xl:left-24 flex items-center gap-4 text-black/40 text-[10px] font-bold uppercase tracking-[0.3em]">
           <span>Design</span>
-          <div className="w-8 h-px bg-black/20" />
+          <div className="w-6 h-px bg-black/20" />
           <span>Strategy</span>
-          <div className="w-8 h-px bg-black/20" />
+          <div className="w-6 h-px bg-black/20" />
           <span>Development</span>
         </div>
       </div>
 
       {/* Login Form */}
-      <div className="relative flex items-center justify-center p-6 sm:p-12 z-20">
+      <div className="relative flex items-center justify-center p-6 md:p-12 z-20">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="w-full max-w-100 space-y-8"
         >
-          {/* Mobile Logo */}
-          <div className="lg:hidden flex justify-center mb-8">
+          <div className="lg:hidden flex justify-center mb-6">
             <div className="bg-zinc-900/50 border border-zinc-800 p-3 rounded-xl backdrop-blur-xl shadow-2xl">
               <Image
                 src="http://cdn.thoughthubhq.com/th-vector-logo.svg"
                 alt="Logo"
-                width={100}
-                height={100}
+                width={70}
+                height={70}
                 className="rounded-xl"
               />
             </div>
           </div>
+
           <Card className="bg-zinc-900/70 border-zinc-800/50 backdrop-blur-2xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden">
-            <CardContent className="px-8">
-              <div className="mb-10">
-                <h2 className="text-3xl font-bold text-white tracking-tight">
+            <CardContent className="px-7">
+              <div className="mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                   Sign In
                 </h2>
-                <p className="text-zinc-500 text-sm mt-2 font-medium">
+                <p className="text-zinc-500 text-sm mt-1.5 font-medium">
                   Welcome back. Please enter your details.
                 </p>
               </div>
@@ -160,28 +155,28 @@ export default function Login() {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-5"
+                  className="space-y-4"
                 >
                   <FormField
                     control={form.control}
                     name="id"
                     render={({ field }) => (
-                      <FormItem className="space-y-2">
-                        <FormLabel className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] ml-1">
+                      <FormItem className="space-y-1.5">
+                        <FormLabel className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
                           Employee ID
                         </FormLabel>
                         <FormControl>
                           <div className="group relative">
-                            <Hash className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
+                            <Hash className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
                             <Input
                               placeholder="TH-001"
                               {...field}
-                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all
-                               focus-visible:ring-3 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
+                              className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all
+                               focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
                             />
                           </div>
                         </FormControl>
-                        <FormMessage className="text-[10px] text-red-400/80 font-medium" />
+                        <FormMessage className="text-[10px] text-red-400/80" />
                       </FormItem>
                     )}
                   />
@@ -190,22 +185,22 @@ export default function Login() {
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                      <FormItem className="space-y-2">
-                        <FormLabel className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] ml-1">
+                      <FormItem className="space-y-1.5">
+                        <FormLabel className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
                           Email Address
                         </FormLabel>
                         <FormControl>
                           <div className="group relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
                             <Input
                               placeholder="name@thoughthubhq.com"
                               {...field}
-                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all 
-                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
+                              className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all 
+                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
                             />
                           </div>
                         </FormControl>
-                        <FormMessage className="text-[10px] text-red-400/80 font-medium" />
+                        <FormMessage className="text-[10px] text-red-400/80" />
                       </FormItem>
                     )}
                   />
@@ -214,40 +209,40 @@ export default function Login() {
                     control={form.control}
                     name="password"
                     render={({ field }) => (
-                      <FormItem className="space-y-2 mb-9">
-                        <FormLabel className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] ml-1">
+                      <FormItem className="space-y-1.5 mb-6">
+                        <FormLabel className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
                           Password
                         </FormLabel>
                         <FormControl>
                           <div className="group relative">
-                            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
+                            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
                             <Input
                               type="password"
                               placeholder="••••••••"
                               {...field}
-                              className="h-12 pl-10 bg-zinc-950/50 border-zinc-800 text-white transition-all 
-                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/50 focus-visible:border-[#e7eacd]/50"
+                              className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all 
+                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
                             />
                           </div>
                         </FormControl>
-                        <FormMessage className="text-[10px] text-red-400/80 font-medium" />
+                        <FormMessage className="text-[10px] text-red-400/80" />
                       </FormItem>
                     )}
                   />
 
                   <motion.div
                     whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileTap={{ scale: 0.99 }}
                   >
                     <Button
                       type="submit"
                       disabled={form.formState.isSubmitting}
-                      className="w-full bg-[#e7eacd] hover:bg-white text-black font-extrabold h-12 transition-colors shadow-[0_0_20px_rgba(231,234,205,0.2)]"
+                      className="w-full bg-[#e7eacd] hover:bg-white text-black font-extrabold h-11 transition-all shadow-lg"
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
                     >
                       {form.formState.isSubmitting ? (
-                        <Loader2 className="h-5 w-5 animate-spin" />
+                        <Loader2 className="h-4 w-4 animate-spin" />
                       ) : (
                         <span className="flex items-center gap-2">
                           Access Workspace{" "}
@@ -262,8 +257,9 @@ export default function Login() {
               </Form>
             </CardContent>
           </Card>
-          <footer className="flex flex-col items-center gap-4">
-            <p className="text-muted-foreground text-[10px] tracking-[0.3em] font-bold">
+
+          <footer className="text-center">
+            <p className="text-zinc-600 text-[9px] tracking-[0.3em] font-bold uppercase">
               © {new Date().getFullYear()} ThoughtHub | All rights reserved
             </p>
           </footer>

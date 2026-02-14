@@ -84,7 +84,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
          <Toaster position="top-right" />
-          <main className="min-h-screen">{children}</main>
+          <main className="grow">{children}</main>
         </ThemeProvider>
       </body>
     </html>
