@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { inter } from "@/lib/font";
 
 export const metadata: Metadata = {
   title: "ThoughtHub - Where Thoughts Take Shape",
@@ -51,7 +41,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning className={inter.className}>
       <head>
         {/* Google Tag Manager */}
         <Script
@@ -65,10 +55,26 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','${GTM_ID}');`,
           }}
         />
+        <Script
+          id="tawkto-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+                var s1=document.createElement("script"),
+                s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/69c15f3e48c7571c3a1705b5/1jkdlo3vf';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+              })();
+            `,
+          }}
+        />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="font-sans antialiased">
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
@@ -83,7 +89,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-         <Toaster position="top-right" />
+          <Toaster position="top-right" />
           <main className="grow">{children}</main>
         </ThemeProvider>
       </body>
