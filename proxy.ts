@@ -2,13 +2,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
-  const token = request.cookies.get("token")?.value;
+  const accessToken = request.cookies.get("accessToken")?.value;
   const { pathname, search } = request.nextUrl;
 
   const isGuestOnlyRoute =
     pathname === "/login" ||
     pathname === "/register" ||
-    pathname === "/verify-otp" ||
     pathname === "/forgot-password";
 
   const isPublicAsset =
@@ -16,14 +15,14 @@ export function proxy(request: NextRequest) {
     pathname.startsWith("/api") ||
     pathname === "/favicon.ico";
 
-  if (!token && !isGuestOnlyRoute && !isPublicAsset) {
+  if (!accessToken && !isGuestOnlyRoute && !isPublicAsset) {
     const callbackUrl = encodeURIComponent(`${pathname}${search}`);
     return NextResponse.redirect(
       new URL(`/login?next=${callbackUrl}`, request.url)
     );
   }
 
-  if (token && isGuestOnlyRoute) {
+  if (accessToken && isGuestOnlyRoute) {
     const nextParam = request.nextUrl.searchParams.get("next");
     const destination = nextParam
       ? decodeURIComponent(nextParam)
@@ -37,7 +36,6 @@ export function proxy(request: NextRequest) {
       pathname.replace("/api/proxy", ""),
       "https://server.thoughthubhq.com"
     );
-
     return NextResponse.rewrite(targetUrl);
   }
 

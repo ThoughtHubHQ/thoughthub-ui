@@ -21,14 +21,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
+import axios from "axios";
 
 const formSchema = z.object({
-  id: z.string().min(1, { message: "ID is required." }),
-  email: z.string().email({ message: "Invalid email." }),
-  password: z.string().min(8, { message: "Minimum 8 characters." }),
+  // id: z.string().min(1, { message: "ID is required." }),
+  // email: z.string().email({ message: "Invalid email." }),
+  // password: z.string().min(8, { message: "Minimum 8 characters." }),
 });
 
 export default function Login() {
+  const [identifire, setIdentifire] = useState("");
+  const [password, setPassword] = useState("");
+
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -45,9 +49,30 @@ export default function Login() {
     defaultValues: { id: "", email: "", password: "" },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast.success("Access Granted! Welcome To ThoughtHub HQ");
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const res = await axios.post(
+        "/api/auth/login",
+        {
+          identifier: identifire,
+          password: password,
+        },
+        { withCredentials: true }, 
+      );
+
+      if (res.data.success) {
+        toast.success(
+          res.data.message || "Access Granted! Welcome To ThoughtHub HQ",
+        );
+        // redirect after login
+        window.location.href = "/dashboard";
+      } else {
+        toast.error(res.data.message || "Login failed");
+      }
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "Something went wrong");
+      console.error(err);
+    }
   }
 
   return (
@@ -195,6 +220,8 @@ export default function Login() {
                             <Input
                               placeholder="name@thoughthubhq.com"
                               {...field}
+                              value={identifire}
+                              onChange={(e) => setIdentifire(e.target.value)}
                               className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all 
                               focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
                             />
@@ -220,6 +247,8 @@ export default function Login() {
                               type="password"
                               placeholder="••••••••"
                               {...field}
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
                               className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all 
                               focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
                             />
@@ -242,7 +271,7 @@ export default function Login() {
                       onMouseLeave={() => setIsHovered(false)}
                     >
                       {form.formState.isSubmitting ? (
-                        <Loader2 className="h-4 w-4 animate-spin" />
+                       <>Accessing Workspace...  <Loader2 className="h-4 w-4 animate-spin" /> </>
                       ) : (
                         <span className="flex items-center gap-2">
                           Access Workspace{" "}
