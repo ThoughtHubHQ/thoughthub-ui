@@ -24,9 +24,9 @@ import { toast } from "sonner";
 import axios from "axios";
 
 const formSchema = z.object({
-  // id: z.string().min(1, { message: "ID is required." }),
-  // email: z.string().email({ message: "Invalid email." }),
-  // password: z.string().min(8, { message: "Minimum 8 characters." }),
+  id: z.string().min(1, { message: "ID is required." }),
+  email: z.string().email({ message: "Invalid email." }),
+  password: z.string().min(8, { message: "Minimum 8 characters." }),
 });
 
 export default function Login() {
