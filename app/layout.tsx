@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import { inter } from "@/lib/font";
-import Analytics from "@/lib/analytics";
+import Analytics, { GTM_ID } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thoughthubhq.com"),
@@ -38,8 +38,6 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const GTM_ID = "GT-K558WRQC";
-
   return (
     <html lang="en" suppressHydrationWarning className={inter.className}>
       <body className="font-sans antialiased bg-background text-foreground">
@@ -51,6 +49,9 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
+
+        <Analytics />
+
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -58,10 +59,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Toaster position="top-right" />
-          <main className="grow">
-            {children}
-            <Analytics />
-          </main>
+          <main className="grow">{children}</main>
         </ThemeProvider>
       </body>
     </html>
