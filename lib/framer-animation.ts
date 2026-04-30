@@ -11,6 +11,8 @@ export const containerVariants: Variants = {
   },
 };
 
+/* ------------------------------------------------------------------------------------------------------*/
+
 // spring-up fade item
 export const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -21,6 +23,8 @@ export const itemVariants: Variants = {
   },
 };
 
+/* ------------------------------------------------------------------------------------------------------*/
+
 // img scale-up reveal
 export const imageVariants: Variants = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -30,6 +34,8 @@ export const imageVariants: Variants = {
     transition: { type: "spring", stiffness: 50, damping: 15 },
   },
 };
+
+/* ------------------------------------------------------------------------------------------------------*/
 
 // img background slide-out
 export const backImageVariants: Variants = {
@@ -43,6 +49,8 @@ export const backImageVariants: Variants = {
   },
 };
 
+/* ------------------------------------------------------------------------------------------------------*/
+
 // img foreground pop-up
 export const frontImageVariants: Variants = {
   hidden: { opacity: 0, scale: 0.9, y: 40 },
@@ -54,6 +62,8 @@ export const frontImageVariants: Variants = {
   },
 };
 
+/* ------------------------------------------------------------------------------------------------------*/
+
 export const textContainerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -64,6 +74,8 @@ export const textContainerVariants: Variants = {
   },
 };
 
+/* ------------------------------------------------------------------------------------------------------*/
+
 export const textItemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
@@ -72,6 +84,8 @@ export const textItemVariants: Variants = {
     transition: { type: "spring", stiffness: 50, damping: 15 },
   },
 };
+
+/* ------------------------------------------------------------------------------------------------------*/
 
 //caption fade and rise on img/div
 export const captionVariants: Variants = {
@@ -82,3 +96,61 @@ export const captionVariants: Variants = {
     transition: { type: "spring", stiffness: 50, damping: 15, delay: 0.3 },
   },
 };
+
+/* ------------------------------------------------------------------------------------------------------*/
+
+//floating
+export const floatVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 15,
+    },
+  },
+  floating: {
+    y: [0, -10, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut",
+    },
+  },
+};
+
+/* ------------------------------------------------------------------------------------------------------*/
+
+//reveal
+export const revealVariants: Variants = {
+  hidden: { opacity: 2, scale: 1.25 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1.5, ease: "easeOut" },
+  },
+};
+
+/* ------------------------------------------------------------------------------------------------------*/
+
+export const slowFloat: Variants = {
+  initial: { opacity: 0, y: 20 },
+  animate: {
+    opacity: 1,
+    y: [0, -6, 0],
+    transition: {
+      opacity: { duration: 0.6 },
+      y: {
+        duration: 5,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+      },
+    },
+  },
+};
+
+/* ------------------------------------------------------------------------------------------------------*/

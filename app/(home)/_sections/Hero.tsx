@@ -1,18 +1,27 @@
+'use client';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BrandDescription, BrandMotto, BrandSlogan } from "@/lib/asset";
 import { roxborough } from "@/lib/font";
+import { motion } from "framer-motion";
+import { floatVariants } from "@/lib/framer-animation";
 
 export default function Hero() {
   return (
     <section className="relative w-full py-5 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
       <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
-        <Badge
-          variant="outline"
-          className={`mb-8 px-5 py-5 rounded-full border border-black/20 dark:border-[#e7eacd]/20 text-xs sm:text-sm font-bold tracking-widest  text-black dark:text-[#e7eacd] ${roxborough.className} `}
+        <motion.div
+          variants={floatVariants}
+          initial="hidden"
+          animate={["show", "floating"]} 
         >
-          {BrandSlogan}
-        </Badge>
+          <Badge
+            variant="outline"
+            className={`mb-8 px-5 py-5 rounded-full border border-black/20 dark:border-[#e7eacd]/20 text-xs sm:text-sm font-bold tracking-widest text-black dark:text-[#e7eacd] shadow-lg ${roxborough.className}`}
+          >
+            {BrandSlogan}
+          </Badge>
+        </motion.div>
 
         <h1
           className={`${roxborough.className} text-5xl md:text-7xl lg:text-8xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-[1.1] mb-8 max-w-5xl`}
