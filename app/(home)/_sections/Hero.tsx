@@ -36,13 +36,13 @@ export default function Hero() {
           {BrandDescription}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto mt-4">
-          <Button className="w-full sm:w-auto px-8 py-7.5 rounded-full bg-black dark:bg-[#e7eacd] text-[#e7eacd] dark:text-black font-medium text-lg hover:scale-105 transition-transform duration-300">
+        <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-5 w-full sm:w-auto mt-4">
+          <Button className="w-full sm:w-auto px-6 py-7 rounded-full bg-black border-2 border-muted-foreground dark:bg-[#e7eacd] text-[#e7eacd] dark:text-black font-medium text-lg hover:scale-105 transition-transform duration-300">
             Start a Project
           </Button>
           <Button
             variant="outline"
-            className="w-full sm:w-auto px-8 py-7.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium text-lg hover:scale-105 transition-all duration-300"
+            className="w-full sm:w-auto px-6 py-7 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium text-lg hover:scale-105 transition-all duration-300"
           >
             Explore Our Work
           </Button>
