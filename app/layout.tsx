@@ -4,11 +4,9 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import { inter } from "@/lib/font";
 import Analytics, { GTM_ID } from "@/lib/analytics";
-import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
-
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+import Header from "@/components/custom/Header/Header";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thoughthubhq.com"),
@@ -47,7 +45,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(inter.className, "font-sans", geist.variable)}
+      className={cn(inter.className, "font-sans")}
     >
       <body className="font-sans antialiased bg-background text-foreground">
         <noscript>
@@ -69,7 +67,10 @@ export default function RootLayout({
         >
           <Toaster position="top-right" />
           <main className="grow">
-            <TooltipProvider>{children}</TooltipProvider>
+            <TooltipProvider>
+              <Header/>
+              {children}
+              </TooltipProvider>
           </main>
         </ThemeProvider>
       </body>
