@@ -8,7 +8,7 @@ import { floatVariants } from "@/lib/framer-animation";
 
 export default function Hero() {
   return (
-    <section className="relative w-full py-5 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
+    <section className="relative w-full py-10 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
       <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
         <motion.div
           variants={floatVariants}
