@@ -21,9 +21,9 @@ export default function Header() {
         <div
           className={`${roxborough.className} text-2xl md:text-3xl font-bold text-black dark:text-[#e7eacd] tracking-wide flex items-center`}
         >
-          {theme === "light" ? (
+          {theme === "dark" ? (
             <Image
-            src="/logo/th-logo-bt.png"
+            src="/logo/th-logo-wt.png"
               alt="Brand Logo"
               width={40}
               height={40}
@@ -31,7 +31,7 @@ export default function Header() {
             />
           ) : (
             <Image
-            src="/logo/th-logo-wt.png"
+            src="/logo/th-logo-bt.png"
               alt="Brand Logo"
               width={40}
               height={40}
