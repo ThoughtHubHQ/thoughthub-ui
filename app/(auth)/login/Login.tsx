@@ -8,20 +8,19 @@ import * as z from "zod";
 import { Lock, Mail, Loader2, Hash, ArrowRight } from "lucide-react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { roxborough } from "@/lib/font";
+import { toast } from "sonner";
+import axios from "axios";
 
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+  Field,
+  FieldSet,
+  Description,
+  FieldError,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { toast } from "sonner";
-import axios from "axios";
+import { Label } from "@/components/ui/label";
 
 const formSchema = z.object({
   id: z.string().min(1, { message: "ID is required." }),
@@ -30,9 +29,6 @@ const formSchema = z.object({
 });
 
 export default function Login() {
-  const [identifire, setIdentifire] = useState("");
-  const [password, setPassword] = useState("");
-
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -44,7 +40,11 @@ export default function Login() {
     mouseY.set(clientY);
   }
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { id: "", email: "", password: "" },
   });
@@ -54,24 +54,21 @@ export default function Login() {
       const res = await axios.post(
         "/api/auth/login",
         {
-          identifier: identifire,
-          password: password,
+          identifier: values.email,
+          password: values.password,
+          employeeId: values.id,
         },
-        { withCredentials: true }, 
+        { withCredentials: true }
       );
 
       if (res.data.success) {
-        toast.success(
-          res.data.message || "Access Granted! Welcome To ThoughtHub HQ",
-        );
-        // redirect after login
+        toast.success(res.data.message || "Access Granted! Welcome To ThoughtHub HQ");
         window.location.href = "/dashboard";
       } else {
         toast.error(res.data.message || "Login failed");
       }
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Something went wrong");
-      console.error(err);
     }
   }
 
@@ -80,7 +77,6 @@ export default function Login() {
       onMouseMove={handleMouseMove}
       className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-zinc-950 overflow-hidden selection:bg-[#e7eacd] selection:text-black"
     >
-      {/* Spotlight */}
       <motion.div
         className="pointer-events-none absolute z-30 w-100 h-100 hidden lg:block rounded-full blur-[100px] opacity-20 lg:opacity-25"
         style={{
@@ -88,13 +84,11 @@ export default function Login() {
           top: springY,
           translateX: "-50%",
           translateY: "-50%",
-          background:
-            "radial-gradient(circle, #e7eacd 0%, #775d14 50%, transparent 100%)",
+          background: "radial-gradient(circle, #e7eacd 0%, #775d14 50%, transparent 100%)",
         }}
       />
 
       <div className="relative hidden lg:flex flex-col justify-center px-12 xl:px-24 bg-[#e7eacd] overflow-hidden">
-        {/* BG Dot */}
         <div
           className="absolute inset-0 opacity-[0.1]"
           style={{
@@ -146,7 +140,6 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Login Form */}
       <div className="relative flex items-center justify-center p-6 md:p-12 z-20">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -167,7 +160,7 @@ export default function Login() {
           </div>
 
           <Card className="bg-zinc-900/70 border-zinc-800/50 backdrop-blur-2xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden">
-            <CardContent className="px-7">
+            <CardContent className="px-7 py-8">
               <div className="mb-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                   Sign In
@@ -177,113 +170,92 @@ export default function Login() {
                 </p>
               </div>
 
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-4"
-                >
-                  <FormField
-                    control={form.control}
-                    name="id"
-                    render={({ field }) => (
-                      <FormItem className="space-y-1.5">
-                        <FormLabel className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
-                          Employee ID
-                        </FormLabel>
-                        <FormControl>
-                          <div className="group relative">
-                            <Hash className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
-                            <Input
-                              placeholder="TH-001"
-                              {...field}
-                              className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all
-                               focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
-                            />
-                          </div>
-                        </FormControl>
-                        <FormMessage className="text-[10px] text-red-400/80" />
-                      </FormItem>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <FieldSet className="space-y-4">
+                  <Field className="space-y-1.5">
+                    <Label className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
+                      Employee ID
+                    </Label>
+                    <div className="group relative">
+                      <Hash className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
+                      <Input
+                        placeholder="TH-001"
+                        {...register("id")}
+                        className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
+                      />
+                    </div>
+                    {errors.id && (
+                      <FieldError className="text-[10px] text-red-400/80">
+                        {errors.id.message}
+                      </FieldError>
                     )}
-                  />
+                  </Field>
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem className="space-y-1.5">
-                        <FormLabel className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
-                          Email Address
-                        </FormLabel>
-                        <FormControl>
-                          <div className="group relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
-                            <Input
-                              placeholder="name@thoughthubhq.com"
-                              {...field}
-                              value={identifire}
-                              onChange={(e) => setIdentifire(e.target.value)}
-                              className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all 
-                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
-                            />
-                          </div>
-                        </FormControl>
-                        <FormMessage className="text-[10px] text-red-400/80" />
-                      </FormItem>
+                  <Field className="space-y-1.5">
+                    <Label className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
+                      Email Address
+                    </Label>
+                    <div className="group relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
+                      <Input
+                        placeholder="name@thoughthubhq.com"
+                        {...register("email")}
+                        className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
+                      />
+                    </div>
+                    {errors.email && (
+                      <FieldError className="text-[10px] text-red-400/80">
+                        {errors.email.message}
+                      </FieldError>
                     )}
-                  />
+                  </Field>
 
-                  <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                      <FormItem className="space-y-1.5 mb-6">
-                        <FormLabel className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
-                          Password
-                        </FormLabel>
-                        <FormControl>
-                          <div className="group relative">
-                            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
-                            <Input
-                              type="password"
-                              placeholder="••••••••"
-                              {...field}
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
-                              className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all 
-                              focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
-                            />
-                          </div>
-                        </FormControl>
-                        <FormMessage className="text-[10px] text-red-400/80" />
-                      </FormItem>
+                  <Field className="space-y-1.5 mb-6">
+                    <Label className="text-zinc-500 text-[9px] font-bold uppercase tracking-[0.2em] ml-1">
+                      Password
+                    </Label>
+                    <div className="group relative">
+                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-600 transition-colors group-focus-within:text-[#e7eacd]" />
+                      <Input
+                        type="password"
+                        placeholder="••••••••"
+                        {...register("password")}
+                        className="h-11 pl-9 bg-zinc-950/50 border-zinc-800 text-white transition-all focus-visible:ring-3 focus-visible:ring-[#e7eacd]/40"
+                      />
+                    </div>
+                    {errors.password && (
+                      <FieldError className="text-[10px] text-red-400/80">
+                        {errors.password.message}
+                      </FieldError>
                     )}
-                  />
+                  </Field>
 
-                  <motion.div
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                  >
+                  <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
                     <Button
                       type="submit"
-                      disabled={form.formState.isSubmitting}
+                      disabled={isSubmitting}
                       className="w-full bg-[#e7eacd] hover:bg-white text-black font-extrabold h-11 transition-all shadow-lg"
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
                     >
-                      {form.formState.isSubmitting ? (
-                       <>Accessing Workspace...  <Loader2 className="h-4 w-4 animate-spin" /> </>
+                      {isSubmitting ? (
+                        <>
+                          Accessing Workspace... <Loader2 className="h-4 w-4 animate-spin ml-2" />
+                        </>
                       ) : (
                         <span className="flex items-center gap-2">
                           Access Workspace{" "}
                           <ArrowRight
-                            className={`h-4 w-4 transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`}
+                            className={`h-4 w-4 transition-transform duration-300 ${
+                              isHovered ? "translate-x-1" : ""
+                            }`}
                           />
                         </span>
                       )}
                     </Button>
                   </motion.div>
-                </form>
-              </Form>
+                </FieldSet>
+              </form>
             </CardContent>
           </Card>
 

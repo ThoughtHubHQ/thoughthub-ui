@@ -4,6 +4,11 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import { inter } from "@/lib/font";
 import Analytics, { GTM_ID } from "@/lib/analytics";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thoughthubhq.com"),
@@ -39,7 +44,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.className}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(inter.className, "font-sans", geist.variable)}
+    >
       <body className="font-sans antialiased bg-background text-foreground">
         <noscript>
           <iframe
@@ -59,7 +68,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Toaster position="top-right" />
-          <main className="grow">{children}</main>
+          <main className="grow">
+            <TooltipProvider>{children}</TooltipProvider>
+          </main>
         </ThemeProvider>
       </body>
     </html>
