@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BrandDescription, BrandMotto, BrandSlogan } from "@/lib/asset";
@@ -13,7 +13,7 @@ export default function Hero() {
         <motion.div
           variants={floatVariants}
           initial="hidden"
-          animate={["show", "floating"]} 
+          animate={["show", "floating"]}
         >
           <Badge
             variant="outline"
