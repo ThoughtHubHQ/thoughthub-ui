@@ -52,7 +52,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center justify-between gap-2">
-          <Button className="px-6 py-5 rounded-full bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black text-sm font-semibold hover:scale-105 transition-transform">
+          <Button className="px-6 py-5 rounded-full bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black text-sm font-semibold hover:scale-105 transition-transform hidden md:flex">
             Let&apos;s Talk
           </Button>
           <ThemeToggle />
