@@ -20,7 +20,7 @@ const projects = [
   {
     id: 2,
     title: "Nature Reatreat",
-    category: "Reservation System for Nature Retreat Eco-Resort",
+    category: "Reservation System",
     description:
       "A comprehensive reservation system for a nature retreat eco-resort, featuring real-time availability, seamless booking management, and personalized guest experiences.",
     image: "/showcase/natureRetreat.png",
@@ -29,7 +29,7 @@ const projects = [
   {
     id: 3,
     title: "FitLife Gym",
-    category: "Fitness Center Portfolio Website",
+    category: "Professional Website",
     description:
       "A sleek and modern portfolio website for FitLife Gym, showcasing their state-of-the-art facilities, diverse fitness programs, and success stories to attract and engage fitness enthusiasts.",
     image: "/showcase/fitlifeGym.png",
