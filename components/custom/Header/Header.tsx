@@ -8,9 +8,9 @@ import Image from "next/image";
 
 export default function Header() {
   const navItems = [
-    { name: "Work", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "Consultancy", href: "#" },
+    { name: "Work", href: "#showcase" },
+    { name: "Services", href: "#services" },
+    { name: "About Us", href: "/about" },
   ];
 
   return (

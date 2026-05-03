@@ -45,7 +45,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(inter.className, "font-sans")}
+      className={cn(inter.className, "font-sans", "scroll-smooth")}
     >
       <body className="font-sans antialiased bg-background text-foreground">
         <noscript>

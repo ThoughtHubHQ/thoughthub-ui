@@ -39,7 +39,7 @@ const projects = [
 
 export default function Work() {
   return (
-    <section className="w-full lg:py-20 bg-transparent">
+    <section className="w-full lg:py-10 bg-transparent" id="showcase">
       <div className="max-w-360 mx-auto px-6 lg:px-8">
         <motion.div
           variants={smoothFadeUpVariants}
@@ -55,17 +55,16 @@ export default function Work() {
               Our <span className="italic font-light">Showcase</span>
             </h2>
             <p className="text-lg text-black/70 dark:text-white/70 font-light">
-               A curated look at some of the
-              digital experiences we&apos;ve brought to life.
+              A curated look at some of the digital experiences we&apos;ve
+              brought to life.
             </p>
           </div>
           <div className="hidden md:flex">
             <Button
               variant="outline"
-              className="px-6 py-6 rounded-full bg-transparent hover:bg-black hover:text-[#e7eacd] dark:hover:bg-[#e7eacd] dark:hover:text-black border-2 border-black/20 dark:border-[#e7eacd]/20 text-black dark:text-[#e7eacd] font-medium transition-all duration-300 group"
+              className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
             >
-              View All Projects
-              <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              Explore Our Work <ArrowUpRight />
             </Button>
           </div>
         </motion.div>
@@ -96,7 +95,8 @@ export default function Work() {
                     className={`${roxborough.className} text-2xl md:text-3xl 
                     font-bold text-black dark:text-[#fafaf8] flex items-center justify-between`}
                   >
-                    {project.title} <ArrowUpRight />
+                    {project.title}{" "}
+                    <ArrowUpRight className="hover:scale-150 hover:transition-transform duration-500" />
                   </h3>
                   <p className="text-black/70 dark:text-white/70 font-light leading-relaxed mt-2 line-clamp-2">
                     {project.description}
