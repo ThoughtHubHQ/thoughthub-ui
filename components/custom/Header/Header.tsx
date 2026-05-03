@@ -14,8 +14,8 @@ export default function Header() {
   ];
 
   return (
-    <div className="bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
-      <header className="relative w-full px-4 lg:px-6 py-4 flex justify-between items-center max-w-360 mx-auto">
+    <header className="absolute top-0 left-0 w-full z-50 bg-transparent transition-colors duration-500">
+      <div className="relative w-full px-8 lg:px-6 py-7 flex justify-between items-center max-w-360 mx-auto">
         <div
           className={`${roxborough.className} text-2xl md:text-3xl font-bold text-black dark:text-[#e7eacd] tracking-wide flex items-center`}
         >
@@ -57,7 +57,7 @@ export default function Header() {
           </Button>
           <ThemeToggle />
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }

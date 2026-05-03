@@ -9,7 +9,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative w-full pt-15 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
+    <section className="relative w-full pt-30 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden min-h-screen">
       <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
         <motion.div
           variants={floatVariants}
@@ -39,8 +39,7 @@ export default function Hero() {
             </span>
           </h1>
           <p
-            className="text-center max-w-3xl text-lg md:text-xl text-black/70 dark:text-white/70
-           font-light leading-relaxed mb-12"
+            className="text-center max-w-3xl text-lg md:text-xl text-black/70 dark:text-white/70 font-light leading-relaxed mb-12"
           >
             {BrandDescription}
           </p>
@@ -51,8 +50,7 @@ export default function Hero() {
             </Button>
             <Button
               variant="outline"
-              className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd]
-               text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
             >
               Explore Our Work
             </Button>
