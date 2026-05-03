@@ -9,7 +9,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative w-full pt-30 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden min-h-screen">
+    <section className="relative w-full pt-12 lg:pt-30 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden min-h-screen">
       <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
         <motion.div
           variants={floatVariants}
