@@ -154,3 +154,25 @@ export const slowFloat: Variants = {
 };
 
 /* ------------------------------------------------------------------------------------------------------*/
+
+// smooth fade up
+export const smoothFadeUpVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
+};
+
+/* ------------------------------------------------------------------------------------------------------*/
+
+// dynamic card reveal
+export const dynamicCardVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: index * 0.1 },
+  }),
+};

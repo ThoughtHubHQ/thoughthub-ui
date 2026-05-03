@@ -9,8 +9,11 @@ import { ChevronRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative w-full pt-12 lg:pt-30 flex flex-col bg-[#e7eacd] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden min-h-screen">
-      <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
+    <section className="relative w-full pt-30 flex flex-col bg-transparent transition-colors duration-500 overflow-hidden lg:min-h-screen">
+      <motion.div
+          variants={itemVariants}
+          initial="hidden"
+          animate={["show", "floating"]} className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
         <motion.div
           variants={floatVariants}
           initial="hidden"
@@ -24,10 +27,7 @@ export default function Hero() {
           </Badge>
         </motion.div>
 
-        <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          animate={["show", "floating"]}
+        <div
           className="flex flex-col justify-center items-center"
         >
           <h1
@@ -38,9 +38,7 @@ export default function Hero() {
               CRAFT.
             </span>
           </h1>
-          <p
-            className="text-center max-w-3xl text-lg md:text-xl text-black/70 dark:text-white/70 font-light leading-relaxed mb-12"
-          >
+          <p className="text-center max-w-3xl text-lg md:text-xl text-black/70 dark:text-white/70 font-light leading-relaxed mb-12">
             {BrandDescription}
           </p>
 
@@ -55,11 +53,8 @@ export default function Hero() {
               Explore Our Work
             </Button>
           </div>
-        </motion.div>
-      </div>
-
-      <div className="absolute top-1/4 left-0 w-120 h-120 bg-white/30 dark:bg-[#e7eacd]/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 right-0 w-160 h-160 bg-black/5 dark:bg-[#e7eacd]/10 rounded-full blur-3xl pointer-events-none"></div>
+        </div>
+      </motion.div>
     </section>
   );
 }
