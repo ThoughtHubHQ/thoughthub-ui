@@ -8,34 +8,32 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { BrandAssets } from "@/lib/asset";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thoughthubhq.com"),
-  title: "ThoughtHub - Where Thoughts Take Shape",
-  description:
-    "Innovative solutions for Web & Mobile apps, Creative Design & Editing, Notion Workspace, IT & Network Consultancy.",
+  metadataBase: new URL(BrandAssets.mainUrl),
+  title: `${BrandAssets.name} - ${BrandAssets.slogan}`,
+  description: BrandAssets.description,
   openGraph: {
-    title: "ThoughtHub - Where Thoughts Take Shape",
-    description:
-      "Innovative solutions for Web & Mobile apps, Creative Design & Editing, Notion Workspace, IT & Network Consultancy.",
+    title: BrandAssets.name,
+    description: BrandAssets.description,
     type: "website",
-    url: "https://thoughthubhq.com",
-    siteName: "ThoughtHub",
+    url: BrandAssets.mainUrl,
+    siteName: BrandAssets.name,
     images: [
       {
-        url: "/banner/th-socialMedia.png",
+        url: BrandAssets.SocialMediaPreview,
         width: 1200,
         height: 630,
-        alt: "ThoughtHub – Innovative Web & Mobile Solutions",
+        alt: `${BrandAssets.name} – Innovative Web & Mobile Solutions`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ThoughtHub - Where Thoughts Take Shape",
-    description:
-      "Innovative solutions for Web & Mobile apps, Creative Design & Editing, Notion Workspace, IT & Network Consultancy.",
-    images: ["/banner/th-socialMedia.png"],
+    title: BrandAssets.name,
+    description: BrandAssets.description,
+    images: [BrandAssets.SocialMediaPreview],
   },
 };
 
