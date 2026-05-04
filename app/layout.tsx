@@ -3,10 +3,11 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import { inter } from "@/lib/font";
-import Analytics, { GTM_ID } from "@/lib/analytics";
+import { GTM_ID } from "@/lib/analytics";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Header from "@/components/custom/Header/Header";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thoughthubhq.com"),
@@ -67,12 +68,11 @@ export default function RootLayout({
         >
           <Toaster position="top-right" />
           <main className="grow">
-            <TooltipProvider>
-              <Header/>
-              {children}
-              </TooltipProvider>
+            <TooltipProvider>{children}</TooltipProvider>
           </main>
         </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

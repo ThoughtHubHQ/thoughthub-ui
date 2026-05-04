@@ -24,7 +24,7 @@ const projects = [
     description:
       "A comprehensive reservation system for a nature retreat eco-resort, featuring real-time availability, seamless booking management, and personalized guest experiences.",
     image: "/showcase/natureRetreat.png",
-    liveUrl: "https://natureretreat.vercel.app",
+    liveUrl: "https://nature-retreat.vercel.app",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const projects = [
 
 export default function Work() {
   return (
-    <section className="w-full lg:py-10 bg-transparent" id="showcase">
+    <section className="w-full lg:py-10 bg-transparent h-screen" id="showcase">
       <div className="max-w-360 mx-auto px-6 lg:px-8">
         <motion.div
           variants={smoothFadeUpVariants}
@@ -50,7 +50,7 @@ export default function Work() {
         >
           <div className="max-w-2xl text-center md:text-left">
             <h2
-              className={`${roxborough.className} text-4xl md:text-6xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-tight mb-4`}
+              className={`${roxborough.className} text-3xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-tight mb-4`}
             >
               Our <span className="italic font-light">Showcase</span>
             </h2>
@@ -62,14 +62,14 @@ export default function Work() {
           <div className="hidden md:flex">
             <Button
               variant="outline"
-              className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto px-3 py-5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
             >
               Explore Our Work <ArrowUpRight />
             </Button>
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {projects.map((project, index) => (
             <a href={project.liveUrl} target="_blank" key={project.id}>
               <div
@@ -77,13 +77,13 @@ export default function Work() {
                   index % 2 !== 0 ? "md:mt-24" : ""
                 }`}
               >
-                <div className="relative w-full aspect-auto rounded-2xl overflow-hidden mb-6 bg-black/5 dark:bg-white/5">
+                <div className="relative w-fit rounded-2xl overflow-hidden mb-6 bg-black/5 dark:bg-white/5">
                   <Image
                     src={project.image}
                     alt={`${project.title} mockup`}
-                    width={800}
-                    height={600}
-                    className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                    width={600}
+                    height={350}
+                    className="object-contain group-hover:scale-105 transition-transform duration-700 ease-in-out"
                   />
                 </div>
 
@@ -93,9 +93,9 @@ export default function Work() {
                   </span>
                   <h3
                     className={`${roxborough.className} text-2xl md:text-3xl 
-                    font-bold text-black dark:text-[#fafaf8] flex items-center justify-between`}
+                    font-bold text-black dark:text-[#fafaf8] flex items-center`}
                   >
-                    {project.title}{" "}
+                    {project.title}
                     <ArrowUpRight className="hover:scale-150 hover:transition-transform duration-500" />
                   </h3>
                   <p className="text-black/70 dark:text-white/70 font-light leading-relaxed mt-2 line-clamp-2">

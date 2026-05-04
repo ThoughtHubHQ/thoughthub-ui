@@ -51,10 +51,10 @@ export default function NotFound() {
           <span className="text-[#775d14] font-bold tracking-[0.4em] uppercase text-sm mb-4 block">
             Error Code: 404
           </span>
-          <h1 className="text-[12rem] font-black text-black leading-none tracking-tighter select-none">
+          <h1 className="text-xl lg:text-7xl xl:text-9xl font-black text-black leading-none tracking-tighter select-none">
             Lost ?
           </h1>
-          <p className="text-2xl text-black/70 font-medium max-w-sm mt-4">
+          <p className="text xl:text-2xl text-black/70 font-medium max-w-md mt-4">
             Even the most structured thoughts occasionally wander off the grid.
           </p>
         </motion.div>
@@ -97,7 +97,7 @@ export default function NotFound() {
                     <Home className="h-5 w-5 text-zinc-400 group-hover:text-white" />
                   </div>
                   <div className="text-left">
-                    <div className="text-sm font-bold uppercase tracking-wide text-muted-foreground group-hover:text-white">
+                    <div className="text-sm font-bold uppercase tracking-wide text-white/85 group-hover:text-primary">
                       Return Home
                     </div>
                     <div className="text-[11px] text-zinc-500 group-hover:text-muted-foreground">
@@ -105,7 +105,7 @@ export default function NotFound() {
                     </div>
                   </div>
                 </div>
-                <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground group-hover:text-white" />
+                <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground group-hover:text-primary" />
               </Button>
             </Link>
             <Button
@@ -118,10 +118,10 @@ export default function NotFound() {
                   <ChevronLeft className="h-5 w-5 text-zinc-400 group-hover:text-white" />
                 </div>
                 <div className="text-left">
-                  <div className="text-sm font-bold uppercase tracking-wide text-muted-foreground group-hover:text-white">
+                  <div className="text-sm font-bold uppercase tracking-wide text-white/85 group-hover:text-primary">
                     Go Back
                   </div>
-                  <div className="text-[11px] text-zinc-500 group-hover:text-muted-foreground">
+                  <div className="text-[11px] text-zinc-500 group-hover:text-primary">
                     Find your way back
                   </div>
                 </div>

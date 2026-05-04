@@ -9,11 +9,8 @@ import { ChevronRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative w-full pt-30 flex flex-col bg-transparent transition-colors duration-500 overflow-hidden lg:min-h-screen">
-      <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          animate={["show", "floating"]} className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
+    <section className="relative w-full pt-30 flex flex-col bg-transparent transition-colors duration-500 overflow-hidden xl:min-h-screen">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
         <motion.div
           variants={floatVariants}
           initial="hidden"
@@ -27,18 +24,21 @@ export default function Hero() {
           </Badge>
         </motion.div>
 
-        <div
+        <motion.div
+          variants={itemVariants}
+          initial="hidden"
+          animate={["show", "floating"]}
           className="flex flex-col justify-center items-center"
         >
           <h1
-            className={`${roxborough.className} text-5xl md:text-7xl lg:text-8xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-[1.1] mb-8 max-w-5xl`}
+            className={`${roxborough.className} text-4xl lg:text-5xl xl:text-8xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-[1.1] mb-8 max-w-5xl`}
           >
-            {BrandMotto.split("CRAFT")[0]} <br className="block md:hidden" />
+            {BrandMotto.split("CRAFT")[0]} <br />
             <span className="italic font-light text-black dark:text-[#e7eacd]">
               CRAFT.
             </span>
           </h1>
-          <p className="text-center max-w-3xl text-lg md:text-xl text-black/70 dark:text-white/70 font-light leading-relaxed mb-12">
+          <p className="text-center max-w-2xl xl:max-w-3xl xl:text-xl text-black/70 dark:text-white/70 font-light leading-relaxed mb-12">
             {BrandDescription}
           </p>
 
@@ -53,8 +53,8 @@ export default function Hero() {
               Explore Our Work
             </Button>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

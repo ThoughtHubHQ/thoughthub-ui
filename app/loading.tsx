@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function Loading() {
   return (
     <div
-      className="min-h-screen w-full bg-white dark:bg-zinc-950 flex flex-col items-center justify-center 
+      className="min-h-screen w-full bg-[#e7eacd] dark:bg-[#0a0a0a] flex flex-col items-center justify-center 
     relative overflow-hidden transition-colors duration-500"
     >
       <div className="absolute w-125 h-125 bg-[#e7eacd]/10 dark:bg-[#e7eacd]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -40,14 +40,14 @@ export default function Loading() {
               ease: "easeInOut",
             }}
             className="bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 
-            p-8 rounded-[2.5rem] backdrop-blur-xl shadow-xl dark:shadow-2xl dark:shadow-black"
+            p-2 rounded-2xl backdrop-blur-xl shadow-xl dark:shadow-2xl dark:shadow-black"
           >
             <Image
               src="http://cdn.thoughthubhq.com/th-vector-logo.svg"
               alt="ThoughtHub"
               width={100}
               height={100}
-              className="brightness-90 dark:brightness-110 transition-all rounded-xl"
+              className="brightness-90 dark:brightness-110 transition-all rounded-lg"
               priority
             />
           </motion.div>
@@ -70,7 +70,7 @@ export default function Loading() {
             </div>
           </div>
 
-          <div className="w-40 h-px bg-zinc-200 dark:bg-zinc-900 rounded-full overflow-hidden relative">
+          <div className="w-60 h-px bg-zinc-200 dark:bg-zinc-900 rounded-full overflow-hidden relative">
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: "100%" }}
