@@ -1,11 +1,11 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BrandDescription, BrandMotto, BrandSlogan } from "@/lib/asset";
 import { roxborough } from "@/lib/font";
 import { motion } from "framer-motion";
 import { floatVariants, itemVariants } from "@/lib/framer-animation";
 import { ChevronRight } from "lucide-react";
+import { BrandAssets } from "@/lib/asset";
 
 export default function Hero() {
   return (
@@ -20,7 +20,7 @@ export default function Hero() {
             variant="outline"
             className={`mb-8 px-5 py-5 rounded-full border border-black/20 dark:border-[#e7eacd]/20 text-xs sm:text-sm font-bold tracking-widest text-black dark:text-[#e7eacd] shadow-lg ${roxborough.className}`}
           >
-            {BrandSlogan}
+            {BrandAssets.slogan}
           </Badge>
         </motion.div>
 
@@ -28,18 +28,19 @@ export default function Hero() {
           variants={itemVariants}
           initial="hidden"
           animate={["show", "floating"]}
+
           className="flex flex-col justify-center items-center"
         >
           <h1
             className={`${roxborough.className} text-4xl lg:text-5xl xl:text-8xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-[1.1] mb-8 max-w-5xl`}
           >
-            {BrandMotto.split("CRAFT")[0]} <br />
+            {BrandAssets.motto.split("CRAFT")[0]} <br />
             <span className="italic font-light text-black dark:text-[#e7eacd]">
               CRAFT.
             </span>
           </h1>
           <p className="text-center max-w-2xl xl:max-w-3xl xl:text-xl text-black/70 dark:text-white/70 font-light leading-relaxed mb-12">
-            {BrandDescription}
+            {BrandAssets.description}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-4 w-full sm:w-auto">

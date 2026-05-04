@@ -2,9 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-changer";
-import { BrandName } from "@/lib/asset";
+import { BrandAssets } from "@/lib/asset";
 import { roxborough } from "@/lib/font";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const navItems = [
@@ -16,25 +17,25 @@ export default function Header() {
   return (
     <header className="absolute top-0 left-0 w-full z-50 bg-transparent transition-colors duration-500">
       <div className="relative w-full px-8 lg:px-6 py-7 flex justify-between items-center max-w-360 mx-auto">
-        <div
+        <Link href="/"
           className={`${roxborough.className} text-2xl md:text-3xl font-bold text-black dark:text-[#e7eacd] tracking-wide flex items-center`}
         >
           <Image
-            src="/logo/th-logo-wt.png"
-            alt="Brand Logo"
+            src={BrandAssets.darkModeLogo}
+            alt="TH Logo"
             width={40}
             height={40}
             className="mr-2 hidden dark:block"
           />
           <Image
-            src="/logo/th-logo-bt.png"
-            alt="Brand Logo"
+            src={BrandAssets.lightModeLogo}
+            alt="TH Logo"
             width={40}
             height={40}
             className="mr-2 block dark:hidden"
           />
-          {BrandName}
-        </div>
+          {BrandAssets.name}
+        </Link>
 
         <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8 text-sm font-medium text-black/70 dark:text-white/70">
           <ul className="flex items-center justify-between gap-5">

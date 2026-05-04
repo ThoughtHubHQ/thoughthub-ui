@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Home, Terminal, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BrandAssets } from "@/lib/asset";
 
 export default function NotFound() {
   const mouseX = useMotionValue(0);
@@ -61,7 +62,7 @@ export default function NotFound() {
 
         <div className="absolute bottom-12 left-24 flex items-center gap-2 text-black/30 text-[10px] font-bold uppercase tracking-widest">
           <Terminal className="h-3 w-3" />
-          <span>ThoughtHub // Path_Not_Defined</span>
+          <span>{BrandAssets.name} // Path_Not_Defined</span>
         </div>
       </div>
 
