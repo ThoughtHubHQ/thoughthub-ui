@@ -46,7 +46,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(inter.className, "font-sans", "scroll-smooth")}
     >
-      <body className="font-sans antialiased bg-background text-foreground">
+      <body className="font-sans antialiased">
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
@@ -65,7 +65,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Toaster position="top-right" />
-          <main className="grow">
+          <main className="flex flex-col grow">
             <TooltipProvider>{children}</TooltipProvider>
           </main>
         </ThemeProvider>

@@ -28,7 +28,6 @@ export default function Hero() {
           variants={itemVariants}
           initial="hidden"
           animate={["show", "floating"]}
-
           className="flex flex-col justify-center items-center"
         >
           <h1
@@ -47,12 +46,18 @@ export default function Hero() {
             <Button className="w-full sm:w-auto px-5 py-6 rounded-full bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black text-sm font-semibold hover:scale-105 transition-transform">
               Start a Project <ChevronRight />
             </Button>
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
-            >
-              Explore Our Work
-            </Button>
+              <Button
+                variant="outline"
+                className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  const section = document.getElementById("showcase");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                Explore Our Work
+              </Button>
           </div>
         </motion.div>
       </div>

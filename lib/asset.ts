@@ -18,8 +18,19 @@ export const BrandAssets = {
 
 // ---------------------------------------------------------------------------------------------//
 
+export const contactInfo = {
+  phone: "+8801518903860",
+  ipPhone: "+8809649903860",
+  whatsApp: "8801518903860",
+  fbMessenger: "https://m.me/thoughthubhq",
+  emailAdmin: "admin@thoughthubhq.com",
+  website: "https://thoughthubhq.com",
+};
+
+// ---------------------------------------------------------------------------------------------//
+
 //Social Media Links
-export const SocialMediaLinks = {
+export const SocialMediaUrls = {
   facebook: "https://www.facebook.com/thoughthubhq",
   instagram: "https://www.instagram.com/thoughthubhq",
   x: "https://x.com/thoughthubhq1",
@@ -27,3 +38,4 @@ export const SocialMediaLinks = {
   github: "https://github.com/thoughthubhq",
   notion: "https://thoughthubhq.notion.site",
 };
+// ---------------------------------------------------------------------------------------------//

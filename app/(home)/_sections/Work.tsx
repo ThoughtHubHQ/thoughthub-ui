@@ -39,7 +39,7 @@ const projects = [
 
 export default function Work() {
   return (
-    <section className="w-full lg:py-10 bg-transparent h-screen" id="showcase">
+    <section className="w-full lg:py-10 bg-transparent mb-10" id="showcase">
       <div className="max-w-360 mx-auto px-6 lg:px-8">
         <motion.div
           variants={smoothFadeUpVariants}
