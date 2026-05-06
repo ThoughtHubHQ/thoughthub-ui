@@ -59,7 +59,7 @@ export default function Footer() {
         {" "}
         <div>
           &copy; {new Date().getFullYear()}{" "}
-          <span className="font-bold text-black font-['Roxborough_CF']">
+          <span className="font-bold text-black dark:text-[#e7eacd] font-['Roxborough_CF']">
             {BrandAssets.name}
           </span>
           . All rights reserved.
