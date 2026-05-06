@@ -48,7 +48,7 @@ export default function Hero() {
             </Button>
               <Button
                 variant="outline"
-                className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto px-4 py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-black/20 dark:border-[#e7eacd]/20 text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
                 onClick={() => {
                   const section = document.getElementById("showcase");
                   if (section) {
