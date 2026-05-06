@@ -1,39 +1,34 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import { useCreateBlockNote } from "@blocknote/react";
-import "@blocknote/core/fonts/inter.css";
-import "@blocknote/mantine/style.css";
 
-const CustomBlockNoteEditor = dynamic(() => import("@/components/CustomBlockNoteEditor"), {
+const Editor = dynamic(() => import("@/components/custom/BlockNoteEditor"), {
   ssr: false,
-  loading: () => <p className="p-4 text-gray-500">Loading editor...</p>,
+  loading: () => (
+    <div className="min-h-120 w-full animate-pulse rounded-xl border border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-[#1f1f1f]" />
+  ),
 });
 
-const BlockNoteView = dynamic(
-  () => import("@blocknote/mantine").then((mod) => mod.BlockNoteView),
-  { ssr: false },
+const Preview = dynamic(
+  () =>
+    import("@/components/custom/BlockNoteEditor").then(
+      (mod) => mod.BlockNotePreview
+    ),
+  {
+    ssr: false,
+  }
 );
 
 export default function EditorPage() {
   const [content, setContent] = useState<any[]>([]);
   const [showPreview, setShowPreview] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const previewEditor = useCreateBlockNote();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handlePublish = () => {
     if (content.length > 0) {
-      previewEditor.replaceBlocks(previewEditor.document, content);
       setShowPreview(true);
     }
   };
-
-  if (!mounted) return null;
 
   return (
     <div className="mx-auto mt-10 w-full max-w-4xl px-4 pb-20 md:px-8">
@@ -41,7 +36,7 @@ export default function EditorPage() {
         Editor
       </h1>
 
-      <CustomBlockNoteEditor onChange={setContent} />
+      <Editor onChange={setContent} />
 
       <div className="mt-6 flex justify-end">
         <button
@@ -53,16 +48,12 @@ export default function EditorPage() {
       </div>
 
       {showPreview && (
-        <div className="mt-12 rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div className="mt-12 rounded-xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-[#1f1f1f]">
           <h2 className="mb-6 border-b border-gray-200 pb-4 text-xl font-bold text-gray-900 dark:border-gray-700 dark:text-gray-100">
             Published Preview
           </h2>
 
-          <BlockNoteView
-            editor={previewEditor as any}
-            editable={false}
-            theme="light"
-          />
+          <Preview content={content} />
         </div>
       )}
     </div>
