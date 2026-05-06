@@ -18,7 +18,7 @@ export default function Hero() {
         >
           <Badge
             variant="outline"
-            className={`mb-8 px-5 py-5 rounded-full border border-black/20 dark:border-[#e7eacd]/20 text-xs sm:text-sm font-bold tracking-widest text-black dark:text-[#e7eacd] shadow-lg ${roxborough.className}`}
+            className={`mb-8 px-5 py-5 rounded-full border border-muted-foreground dark:border-[#e7eacd] text-xs sm:text-sm font-bold tracking-widest text-black dark:text-[#e7eacd] shadow-lg ${roxborough.className}`}
           >
             {BrandAssets.slogan}
           </Badge>
