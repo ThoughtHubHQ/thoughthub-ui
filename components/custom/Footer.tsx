@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa6";
 import { SiNotion } from "react-icons/si";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { roxborough } from "@/lib/font";
 
 const encodedMessage = encodeURIComponent(
   "Hello, ThoughtHub! I have a question about your services.",
@@ -59,7 +60,7 @@ export default function Footer() {
         {" "}
         <div>
           &copy; {new Date().getFullYear()}{" "}
-          <span className="font-bold text-black dark:text-[#e7eacd] font-['Roxborough_CF']">
+          <span className={`font-bold text-black dark:text-[#e7eacd] ${roxborough.className}`}>
             {BrandAssets.name}
           </span>
           . All rights reserved.
