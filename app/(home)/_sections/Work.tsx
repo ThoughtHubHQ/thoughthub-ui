@@ -54,7 +54,7 @@ export default function Work() {
             >
               Our <span className="italic font-light">Showcase</span>
             </h2>
-            <p className="text-lg text-black/70 dark:text-white/70 font-light">
+            <p className="text-sm lg:text-lg text-black/70 dark:text-white/70 font-light">
               A curated look at some of the digital experiences we&apos;ve
               brought to life.
             </p>
@@ -98,7 +98,7 @@ export default function Work() {
                     {project.title}
                     <ArrowUpRight className="hover:scale-150 hover:transition-transform duration-500" />
                   </h3>
-                  <p className="text-black/70 dark:text-white/70 font-light leading-relaxed mt-2 line-clamp-2">
+                  <p className="text-black/70 dark:text-white/70 text-sm md:text-base font-light leading-relaxed mt-2 line-clamp-2">
                     {project.description}
                   </p>
                 </div>
@@ -109,10 +109,10 @@ export default function Work() {
         <div className="flex md:hidden justify-center mt-8">
           <Button
             variant="outline"
-            className="px-6 py-6 rounded-full bg-transparent hover:bg-black hover:text-[#e7eacd] dark:hover:bg-[#e7eacd] dark:hover:text-black border-2 border-black/20 dark:border-[#e7eacd]/20 text-black dark:text-[#e7eacd] font-medium transition-all duration-300 group"
+            className="px-3 lg:px-6 py-4.5 lg:py-6 text-xs md:text-base rounded-full bg-transparent hover:bg-black hover:text-[#e7eacd] dark:hover:bg-[#e7eacd] dark:hover:text-black border-2 border-black/20 dark:border-[#e7eacd]/20 text-black dark:text-[#e7eacd] font-medium transition-all duration-300 group"
           >
             View All Projects
-            <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <ArrowUpRight />
           </Button>
         </div>
       </div>

@@ -66,7 +66,7 @@ export default function Footer() {
           . All rights reserved.
         </div>
         <div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-3 lg:gap-4">
             {socialMediaLinks.map((item, index) => {
               const IconComponent = item.icon;
 
@@ -77,7 +77,7 @@ export default function Footer() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mx-2 text-2xl text-black/70 dark:text-[#e7eacd]/70 hover:text-black dark:hover:text-[#e7eacd] transition-colors duration-300 inline-flex items-center"
+                      className="text-lg lg:text-2xl text-black/70 dark:text-[#e7eacd]/70 hover:text-black dark:hover:text-[#e7eacd] transition-colors duration-300 inline-flex items-center"
                     >
                       <IconComponent />
                     </a>

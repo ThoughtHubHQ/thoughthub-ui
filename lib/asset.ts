@@ -25,6 +25,8 @@ export const contactInfo = {
   fbMessenger: "https://m.me/thoughthubhq",
   emailAdmin: "admin@thoughthubhq.com",
   website: "https://thoughthubhq.com",
+  location: "1/15/1, Dhaka Housing, Adabor, Dhaka 1207, Bangladesh",
+  googleMapUrl: "https://maps.app.goo.gl/7912bVHJDRApVvBe8",
 };
 
 // ---------------------------------------------------------------------------------------------//
