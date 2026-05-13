@@ -70,7 +70,7 @@ export default function FAQ() {
                 Inquiries
               </span>
             </h2>
-            <p className="text-xs lg:text-lg text-black/70 dark:text-white/70 font-light">
+            <p className="text-sm lg:text-lg text-black/70 dark:text-white/70 font-light">
               Every great collaboration begins with mutual understanding.
               Discover more about our approach, our boundaries, and what it
               means to build a deep connection with our team.
@@ -91,7 +91,7 @@ export default function FAQ() {
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="mt-2 text-black/70 dark:text-white/70 text-xs md:text-base font-light leading-relaxed pb-6 pr-6 md:pr-12">
+                <AccordionContent className="mt-2 text-black/70 dark:text-white/70 text-sm md:text-base font-light leading-relaxed pb-6 pr-6 md:pr-12">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
