@@ -12,7 +12,7 @@ import {
 import { BrandAssets } from "@/lib/asset";
 
 const brandNameCraft = (
-  <span className={`${roxborough.className} font-bold`}>
+  <span className={`${roxborough.className} dark:text-[#fafaf8] font-bold`}>
     {BrandAssets.name}
   </span>
 );
@@ -84,14 +84,14 @@ export default function FAQ() {
               <AccordionItem
                 key={faq.id}
                 value={`faq-${faq.id}`}
-                className="border border-muted-foreground dark:border-[#e7eacd] rounded-lg mb-4 p-1 pl-5 md:p-2 md:pl-6"
+                className="border border-muted-foreground dark:border-[#e7eacd] rounded-lg mb-4 px-4 lg:px-7 py-2 lg:py-3"
               >
                 <AccordionTrigger className="text-left md:text-lg font-medium text-black dark:text-[#fafaf8] hover:no-underline group">
                   <span className="group-hover:text-black/70 dark:group-hover:text-[#e7eacd]/70 transition-colors duration-300">
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="mt-2 text-black/70 dark:text-white/70 text-sm md:text-base font-light leading-relaxed pb-6 pr-6 md:pr-12">
+                <AccordionContent className="mt-2 text-black/70 dark:text-white/70 text-sm md:text-base font-light leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
