@@ -176,3 +176,15 @@ export const dynamicCardVariants: Variants = {
     transition: { duration: 0.8, delay: index * 0.1 },
   }),
 };
+
+/* ------------------------------------------------------------------------------------------------------*/
+
+//sliding heading section from right to left while load the page
+export const slideInFromLeft: Variants = {
+  hidden: { opacity: 0, x: -50 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeIn" },
+  },
+};

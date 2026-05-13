@@ -52,7 +52,7 @@ export default function Work() {
             <h2
               className={`${roxborough.className} text-3xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-tight mb-4`}
             >
-              Our <span className="italic font-light">Showcase</span>
+              Our <span className="italic font-light dark:text-[#e7eacd]">Showcase</span>
             </h2>
             <p className="text-sm lg:text-lg text-black/70 dark:text-white/70 font-light">
               A curated look at some of the digital experiences we&apos;ve
