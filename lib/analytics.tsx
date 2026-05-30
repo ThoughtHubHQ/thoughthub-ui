@@ -1,8 +1,8 @@
 import Script from "next/script";
 
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID as string;
-export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID as string;
-export const TAWKTO_ID = process.env.NEXT_PUBLIC_TAWKTO_ID as string;
+export const GTM_ID = "G-XP30QSN6BY";
+export const CLARITY_ID = "w597ovids3";
+export const TAWKTO_ID = "69c15f3e48c7571c3a1705b5/1jkdlo3vf";
 
 export default function Analytics() {
   return (
