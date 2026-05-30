@@ -4,7 +4,7 @@ export const GTM_ID = "G-XP30QSN6BY";
 export const CLARITY_ID = "w597ovids3";
 export const TAWKTO_ID = "69c15f3e48c7571c3a1705b5/1jkdlo3vf";
 
-export default function Analytics() {
+export default function AppAnalytics() {
   return (
     <>
       <Script id="gtm-script" strategy="afterInteractive">

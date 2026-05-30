@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import { inter } from "@/lib/font";
-import { GTM_ID } from "@/lib/analytics";
+import AppAnalytics, { GTM_ID } from "@/lib/analytics";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
@@ -83,6 +83,7 @@ export default function RootLayout({
         </ThemeProvider>
 
         <SpeedInsights />
+        <AppAnalytics />
       </body>
     </html>
   );
