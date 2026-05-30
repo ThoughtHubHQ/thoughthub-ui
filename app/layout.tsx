@@ -40,6 +40,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: BrandAssets.name,
+    url: BrandAssets.mainUrl,
+  };
+
   return (
     <html
       lang="en"
@@ -56,6 +63,11 @@ export default function RootLayout({
           ></iframe>
         </noscript>
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <Analytics />
 
         <ThemeProvider
@@ -69,8 +81,8 @@ export default function RootLayout({
             <TooltipProvider>{children}</TooltipProvider>
           </main>
         </ThemeProvider>
+
         <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );
