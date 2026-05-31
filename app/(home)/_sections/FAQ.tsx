@@ -52,7 +52,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="w-full lg:py-10 bg-transparent mb-10" id="faq">
+    <section className="w-full py-5 lg:py-10 bg-transparent mb-10" id="faq">
       <div className="max-w-360 mx-auto px-6 lg:px-8">
         <motion.div
           variants={slideInFromLeft}
