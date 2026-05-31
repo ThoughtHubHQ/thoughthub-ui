@@ -14,7 +14,10 @@ import * as z from "zod";
 
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  phone: z.string().optional(),
+  phone: z
+    .string()
+    .min(11, "Phone number must be at least 11 characters")
+    .max(11, "Phone number must be at most 11 characters"),
   email: z.string().email("Please enter a valid email"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
