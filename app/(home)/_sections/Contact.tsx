@@ -3,13 +3,15 @@
 import ContactForm from "@/components/form/ContactForm";
 import { motion } from "framer-motion";
 import { roxborough } from "@/lib/font";
-import { contactInfo } from "@/lib/asset";
 import {
   smoothFadeUpVariants,
   slideInFromLeft,
   containerVariants,
   itemVariants,
 } from "@/lib/framer-animation";
+import { contactInfo } from "@/lib/asset";
+
+import SocialMediaIcons from "@/components/custom/SocialMediaIcons";
 
 export default function Contact() {
   return (
@@ -42,7 +44,7 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -90,6 +92,13 @@ export default function Contact() {
                   {contactInfo.location}
                 </a>
               </address>
+
+              <div className="mt-8">
+                <h3 className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-white/50 mb-4">
+                  Social Media
+                </h3>
+               <SocialMediaIcons/>
+              </div>
             </motion.div>
           </motion.div>
           <motion.div
