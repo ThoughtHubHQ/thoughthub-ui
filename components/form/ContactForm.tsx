@@ -27,6 +27,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [messageSent, setMessageSent] = useState("");
 
   const {
     register,
@@ -56,9 +57,13 @@ export default function ContactForm() {
       );
 
       setLoading(false);
+      setMessageSent("Your message has been sent successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
       setLoading(false);
+      setMessageSent(
+        "An error occurred while sending your message. Please try again.",
+      );
     }
   };
 
@@ -159,13 +164,24 @@ export default function ContactForm() {
           disabled={loading || !turnstileToken}
         >
           {loading ? (
-            <Spinner />
+            <>
+              Sending Message... <Spinner />
+            </>
           ) : (
             <>
               Send Message <ArrowRight className="ml-2 h-4 w-4" />
             </>
           )}
         </Button>
+        {messageSent && (
+          <p
+            className={`text-sm mt-3 ${
+              messageSent.includes("error") ? "text-red-500" : "text-green-500"
+            }`}
+          >
+            {messageSent}
+          </p>
+        )}
       </div>
     </form>
   );
