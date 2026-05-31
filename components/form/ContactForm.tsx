@@ -43,12 +43,23 @@ export default function ContactForm() {
       ...data,
       turnstileToken,
     };
+    try {
+      const response = await fetch(
+        `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
 
-    console.log("Ready to send to API:", payload);
-
-    // API logic will go here
-
-    setLoading(false);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setLoading(false);
+    }
   };
 
   return (
