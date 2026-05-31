@@ -42,9 +42,13 @@ export default function ContactForm() {
 
     const payload = {
       ...data,
-      turnstileToken,
     };
     try {
+      if (!turnstileToken) {
+        setLoading(false);
+        setMessageSent("Please complete the CAPTCHA challenge.");
+        return;
+      }
       const response = await fetch(
         `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID}`,
         {
@@ -68,10 +72,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <div className="mb-5">
         <Label
           htmlFor="name"
@@ -176,7 +177,9 @@ export default function ContactForm() {
         {messageSent && (
           <p
             className={`text-sm text-center font-bold mt-5 ${
-              messageSent.includes("error") ? "text-red-700 dark:text-red-500" : "text-black dark:text-[#fafaf8]"
+              messageSent.includes("error")
+                ? "text-red-700 dark:text-red-500"
+                : "text-black dark:text-[#fafaf8]"
             }`}
           >
             {messageSent}
