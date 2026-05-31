@@ -35,23 +35,29 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactFormValues) => {
     setLoading(true);
-    
+
     const payload = {
       ...data,
       turnstileToken,
     };
 
     console.log("Ready to send to API:", payload);
-    
+
     // API logic will go here
-    
+
     setLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg mx-auto md:mx-0">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-lg mx-auto md:mx-0"
+    >
       <div className="mb-5">
-        <Label htmlFor="name" className="mb-3 block text-black dark:text-[#fafaf8] font-medium">
+        <Label
+          htmlFor="name"
+          className="mb-3 block text-black dark:text-[#fafaf8] font-medium"
+        >
           Full Name
         </Label>
         <Input
@@ -61,12 +67,17 @@ export default function ContactForm() {
           className="py-6 border-2 border-black dark:border-[#e7eacd] text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
           {...register("name")}
         />
-        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+        )}
       </div>
-      
+
       <div className="flex flex-col md:flex-row w-full gap-4 my-5">
         <div className="w-full">
-          <Label htmlFor="phone" className="mb-3 block text-black dark:text-[#fafaf8] font-medium">
+          <Label
+            htmlFor="phone"
+            className="mb-3 block text-black dark:text-[#fafaf8] font-medium"
+          >
             Phone Number
           </Label>
           <Input
@@ -78,7 +89,10 @@ export default function ContactForm() {
           />
         </div>
         <div className="w-full">
-          <Label htmlFor="email" className="mb-3 block text-black dark:text-[#fafaf8] font-medium">
+          <Label
+            htmlFor="email"
+            className="mb-3 block text-black dark:text-[#fafaf8] font-medium"
+          >
             Email
           </Label>
           <Input
@@ -88,35 +102,43 @@ export default function ContactForm() {
             className="py-6 border-2 border-black dark:border-[#e7eacd] w-full text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
             {...register("email")}
           />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+          )}
         </div>
       </div>
 
       <div className="mb-5">
-        <Label htmlFor="message" className="mb-3 block text-black dark:text-[#fafaf8] font-medium">
+        <Label
+          htmlFor="message"
+          className="mb-3 block text-black dark:text-[#fafaf8] font-medium"
+        >
           Message
         </Label>
         <Textarea
           id="message"
-          placeholder="eg. I have a question about your services..."
-          className="py-6 border-2 border-black dark:border-[#e7eacd] text-black dark:text-[#fafaf8] bg-transparent min-h-[150px] resize-none focus-visible:ring-0 focus-visible:ring-offset-0"
+          placeholder="eg. I want to discuss a project idea..."
+          className="py-6 border-2 border-black dark:border-[#e7eacd] text-black dark:text-[#fafaf8] bg-transparent min-h-37.5 resize-none focus-visible:ring-0 focus-visible:ring-offset-0"
           {...register("message")}
         />
-        {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
+        {errors.message && (
+          <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+        )}
       </div>
 
-      <div>
-        <Turnstile 
-          siteKey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || ""} 
-          className="my-5" 
+      <div className="flex items-center justify-center">
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || ""}
           onVerify={(token) => setTurnstileToken(token)}
+          className="mt-2 mb-3"
+          theme="dark"
         />
       </div>
 
       <div>
         <Button
           type="submit"
-          className="w-full py-6 md:py-7 text-md bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black mt-5 rounded-full font-semibold hover:scale-105 transition-transform"
+          className="w-full py-6 md:py-7 text-md bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black rounded-full font-semibold hover:scale-105 transition-transform"
           disabled={loading || !turnstileToken}
         >
           {loading ? (

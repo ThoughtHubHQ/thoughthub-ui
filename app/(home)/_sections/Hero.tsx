@@ -43,21 +43,29 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-4 w-full sm:w-auto">
-            <Button className="w-full sm:w-auto px-5 py-5 lg:py-6 rounded-full bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black text-sm font-semibold hover:scale-105 transition-transform">
+            <Button
+              className="w-full sm:w-auto px-5 py-5 lg:py-6 rounded-full bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black text-sm font-semibold hover:scale-105 transition-transform"
+              onClick={() => {
+                const section = document.getElementById("contact");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               Start a Project <ChevronRight />
             </Button>
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto px-4 py-4.5 lg:py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  const section = document.getElementById("showcase");
-                  if (section) {
-                    section.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-              >
-                Explore Our Work
-              </Button>
+            <Button
+              variant="outline"
+              className="w-full sm:w-auto px-4 py-4.5 lg:py-5.5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
+              onClick={() => {
+                const section = document.getElementById("showcase");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              Explore Our Work
+            </Button>
           </div>
         </motion.div>
       </div>
