@@ -175,8 +175,8 @@ export default function ContactForm() {
         </Button>
         {messageSent && (
           <p
-            className={`text-sm mt-3 ${
-              messageSent.includes("error") ? "text-red-500" : "text-green-500"
+            className={`text-sm text-center font-bold mt-5 ${
+              messageSent.includes("error") ? "text-red-700 dark:text-red-500" : "text-black dark:text-[#fafaf8]"
             }`}
           >
             {messageSent}
