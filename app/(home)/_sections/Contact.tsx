@@ -50,38 +50,38 @@ export default function Contact() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex flex-col justify-center gap-10 lg:pl-10 mt-8 lg:mt-0 order-last lg:order-first"
+            className="flex flex-col justify-center gap-5 lg:gap-10 lg:pl-10 mt-8 lg:mt-0 order-last lg:order-first"
           >
-            <motion.div variants={itemVariants} className="flex flex-col gap-2">
+            <motion.div variants={itemVariants} className="flex flex-col gap-1 lg:gap-2">
               <h3 className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-white/50">
                 Direct Inquiries
               </h3>
               <a
                 href={`mailto:${contactInfo.emailAdmin}`}
-                className={`${roxborough.className} text-2xl font-bold text-black dark:text-[#fafaf8] hover:opacity-70 dark:hover:text-[#e7eacd] transition-colors`}
+                className={`${roxborough.className} text-md lg:text-2xl font-bold text-black dark:text-[#fafaf8] hover:opacity-70 dark:hover:text-[#e7eacd] transition-colors`}
               >
                 {contactInfo.emailAdmin}
               </a>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-2">
+            <motion.div variants={itemVariants} className="flex flex-col gap-1 lg:gap-2">
               <h3 className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-white/50">
                 Phone Support
               </h3>
               <a
                 href={`tel:${contactInfo.phone}`}
-                className={`${roxborough.className} text-2xl font-bold text-black dark:text-[#fafaf8] hover:opacity-70 dark:hover:text-[#e7eacd] transition-colors`}
+                className={`${roxborough.className} text-md lg:text-2xl font-bold text-black dark:text-[#fafaf8] hover:opacity-70 dark:hover:text-[#e7eacd] transition-colors`}
               >
                 {contactInfo.phone}
               </a>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-2">
+            <motion.div variants={itemVariants} className="flex flex-col gap-1 lg:gap-2">
               <h3 className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-white/50">
                 Location
               </h3>
               <address
-                className={`${roxborough.className} text-2xl font-bold text-black dark:text-[#fafaf8] not-italic leading-relaxed max-w-sm`}
+                className={`${roxborough.className} text-md lg:text-2xl font-bold text-black dark:text-[#fafaf8] not-italic leading-relaxed max-w-sm`}
               >
                 <a
                   href={contactInfo.googleMapUrl}
@@ -92,14 +92,13 @@ export default function Contact() {
                   {contactInfo.location}
                 </a>
               </address>
-
-              <div className="mt-8">
-                <h3 className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-white/50 mb-4">
+            </motion.div>
+              <motion.div variants={itemVariants} className="flex flex-col gap-1 lg:gap-2">
+                <h3 className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-white/50">
                   Social Media
                 </h3>
                <SocialMediaIcons/>
-              </div>
-            </motion.div>
+              </motion.div>
           </motion.div>
           <motion.div
             variants={smoothFadeUpVariants}
