@@ -81,7 +81,14 @@ export default function Contact() {
               <address
                 className={`${roxborough.className} text-2xl font-bold text-black dark:text-[#fafaf8] not-italic leading-relaxed max-w-sm`}
               >
-                {contactInfo.location}
+                <a
+                  href={contactInfo.googleMapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-70 dark:hover:text-[#e7eacd] transition-colors hover:underline"
+                >
+                  {contactInfo.location}
+                </a>
               </address>
             </motion.div>
           </motion.div>
