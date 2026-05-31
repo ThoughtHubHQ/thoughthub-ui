@@ -70,7 +70,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-lg mx-auto md:mx-0"
+      className="w-full"
     >
       <div className="mb-5">
         <Label
@@ -102,7 +102,7 @@ export default function ContactForm() {
           <Input
             type="text"
             id="phone"
-            placeholder="eg. 123-456-7890"
+            placeholder="eg. 01518903860"
             className="py-6 border-2 border-black dark:border-[#e7eacd] w-full text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
             {...register("phone")}
           />
@@ -120,7 +120,7 @@ export default function ContactForm() {
           <Input
             type="text"
             id="email"
-            placeholder="eg. john.doe@example.com"
+            placeholder="eg. admin@thoughthubhq.com"
             className="py-6 border-2 border-black dark:border-[#e7eacd] w-full text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
             {...register("email")}
           />
