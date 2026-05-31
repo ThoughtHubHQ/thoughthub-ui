@@ -90,6 +90,9 @@ export default function ContactForm() {
             className="py-6 border-2 border-black dark:border-[#e7eacd] w-full text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
             {...register("phone")}
           />
+          {errors.phone && (
+            <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+          )}
         </div>
         <div className="w-full">
           <Label
