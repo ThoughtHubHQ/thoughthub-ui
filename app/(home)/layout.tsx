@@ -1,3 +1,6 @@
+import Footer from "@/components/custom/Footer";
+import Header from "@/components/custom/Header/Header";
+
 export default function HomeLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -7,7 +10,11 @@ export default function HomeLayout({
       <div className="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-black/5 dark:bg-[#e7eacd]/10 rounded-full blur-[120px] pointer-events-none z-0" />
 
       <div className="relative z-10 flex flex-col">
-        <div className="grow flex flex-col w-full">{children}</div>
+        <div className="grow flex flex-col w-full">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </div>
     </div>
   );
