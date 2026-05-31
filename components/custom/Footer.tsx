@@ -1,6 +1,16 @@
 import { BrandAssets } from "@/lib/asset";
 import { roxborough } from "@/lib/font";
-import SocialMediaIcons from "./SocialMediaIcons";
+
+const footerLinks = [
+  {
+    title: "Privacy Policy",
+    url: "/privacy-policy",
+  },
+  {
+    title: "Terms & Conditions",
+    url: "/terms-and-conditions",
+  },
+];
 
 export default function Footer() {
   return (
@@ -15,8 +25,19 @@ export default function Footer() {
           </span>
           . All rights reserved.
         </div>
-        <div className="hidden md:block">
-          <SocialMediaIcons />
+        <div>
+          <ul className="flex gap-6">
+            {footerLinks.map((link) => (
+              <li key={link.url}>
+                <a
+                  href={link.url}
+                  className="hover:text-black dark:hover:text-[#e7eacd] transition-colors text-xs md:text-sm"
+                >
+                  {link.title}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
