@@ -1,22 +1,27 @@
 import Script from "next/script";
 
-export const GTM_ID = "G-XP30QSN6BY";
+export const GA_ID = "G-XP30QSN6BY";
 export const CLARITY_ID = "w597ovids3";
 export const TAWKTO_ID = "69c15f3e48c7571c3a1705b5/1jkdlo3vf";
 
 export default function AppAnalytics() {
   return (
     <>
-      <Script id="gtm-script" strategy="afterInteractive">
+      {/* Google Analytics */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','${GTM_ID}');
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_ID}');
         `}
       </Script>
 
+      {/* Tawk.to */}
       <Script id="tawkto-script" strategy="afterInteractive">
         {`
           var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -32,6 +37,7 @@ export default function AppAnalytics() {
         `}
       </Script>
 
+      {/* Clarity */}
       <Script id="clarity-script" strategy="lazyOnload">
         {`
           (function(c,l,a,r,i,t,y){
