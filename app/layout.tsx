@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 import { inter } from "@/lib/font";
-import AppAnalytics, { GTM_ID } from "@/lib/analytics";
+import AppAnalytics from "@/lib/analytics";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
