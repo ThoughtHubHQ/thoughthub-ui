@@ -50,7 +50,7 @@ export default function Contact() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="flex flex-col justify-center gap-5 lg:gap-10 lg:pl-10 mt-8 lg:mt-0 order-last lg:order-first"
+            className="flex flex-col justify-center gap-5 lg:gap-10 order-last lg:order-first"
           >
             <motion.div variants={itemVariants} className="flex flex-col gap-1 lg:gap-2">
               <h3 className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-white/50">
