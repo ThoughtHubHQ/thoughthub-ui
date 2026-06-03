@@ -16,7 +16,7 @@ import SocialMediaIcons from "@/components/custom/SocialMediaIcons";
 export default function Contact() {
   return (
     <section
-      className="w-full py-5 lg:py-10 bg-transparent mb-10 overflow-hidden"
+      className="w-full py-7 bg-transparent mb-10 overflow-hidden"
       id="contact"
     >
       <div className="max-w-360 mx-auto px-6 lg:px-8">

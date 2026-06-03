@@ -10,7 +10,7 @@ import { BrandAssets } from "@/lib/asset";
 export default function Hero() {
   return (
     <section className="relative w-full pt-30 flex flex-col bg-transparent transition-colors duration-500 overflow-hidden xl:min-h-screen">
-      <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-20">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 relative z-10 text-center pb-10 xl:pb-20">
         <motion.div
           variants={floatVariants}
           initial="hidden"
