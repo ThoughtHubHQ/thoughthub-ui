@@ -44,6 +44,10 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: BrandAssets.name,
+    alternateName: [
+      BrandAssets.name.replace(/\s+/g, ""), 
+      BrandAssets.name.toLowerCase()
+    ],
     url: BrandAssets.mainUrl,
   };
 
