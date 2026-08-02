@@ -11,6 +11,8 @@ export const BrandAssets = {
   logo: "/logo/th-logo.png",
   lightModeLogo: "/logo/th-logo-bt.png",
   darkModeLogo: "/logo/th-logo-wt.png",
+  ceoSignLight: "/signature/ceoSignLight.png",
+  ceoSignDark: "/signature/ceoSignDark.png",
   mainUrl: "https://thoughthubhq.com",
   wwwUrl: "https://www.thoughthubhq.com",
   SocialMediaPreview: "/banner/th-socialMedia.png",

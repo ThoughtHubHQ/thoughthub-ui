@@ -17,55 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Mail } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
-
-// Team Data with added modal details
-const teamMembers = [
-  {
-    employeeId: "TH101",
-    name: "Ashikur Rahman Bhuiyan",
-    designation: "Founder & CEO, Full Stack Developer",
-    image: "/teams/ashik.png",
-    bio: "Ashikur is the visionary behind our agency, blending deep technical expertise with a sharp business acumen. With over a decade of experience in full-stack architecture, he leads our core development strategies while ensuring every project meets our rigorous standard of craftsmanship.",
-    email: "ashikur@company.com",
-    linkedin: "https://linkedin.com/in/ashikurrb",
-  },
-  {
-    employeeId: "TH102",
-    name: "MD Tanim Hossain",
-    designation: "CFO, Marketing Lead",
-    image: "/teams/tanim.jpg",
-    bio: "Tanim drives the financial and marketing engines of the agency. His unique background in both numbers and narrative allows him to craft marketing strategies that are not only highly creative but also deeply analytical and conversion-focused.",
-    email: "ccttanim@thoughthubhq.com",
-    linkedin: "https://linkedin.com/in/ccttanim",
-  },
-  {
-    employeeId: "TH301",
-    name: "Fardin Evan",
-    designation: "UI/UX Designer",
-    image: "/teams/fardin.png",
-    bio: "Fardin translates complex requirements into intuitive, breathtaking digital experiences. He obsesses over every pixel, transition, and user journey, ensuring our designs are as functional as they are beautiful.",
-    email: "fardin@company.com",
-    linkedin: "https://linkedin.com/in/fardin-evan-limon-0a0306227/",
-  },
-  {
-    employeeId: "TH203",
-    name: "Md Ruhul Amin",
-    designation: "Full Stack Developer",
-    image: "/teams/ruhul.jpg",
-    bio: "Ruhul specializes in building robust, scalable backend systems and seamless frontend interfaces. His code is clean, efficient, and acts as the structural backbone for some of our most complex digital platforms.",
-    email: "ruhul@company.com",
-    linkedin: "https://linkedin.com/in/md-ruhul-amin-b44528202",
-  },
-  {
-    employeeId: "TH204",
-    name: "Md. Abdul Kader",
-    designation: "Full Stack Developer",
-    image: "/teams/jony.jpg",
-    bio: "Joni is a versatile developer with a passion for modern web technologies. He brings ideas to life with flawless execution, optimizing performance and ensuring pixel-perfect implementations across all devices.",
-    email: "joni@company.com",
-    linkedin: "https://linkedin.com/in/md-abdul-kader-852871202/",
-  },
-];
+import { teamMembers } from "@/lib/teamMembers";
 
 export default function Team() {
   return (
@@ -107,7 +59,7 @@ export default function Team() {
                 <DialogTrigger className="group flex flex-col items-center sm:items-start sm:text-left w-full text-left outline-none">
                   <div className="relative w-full max-w-70 sm:max-w-full aspect-4/5 rounded-2xl overflow-hidden mb-6 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 cursor-pointer">
                     <Image
-                      src={member.image}
+                      src={member.avatar}
                       alt={`${member.name} - ${member.designation}`}
                       width={400}
                       height={500}
@@ -137,11 +89,11 @@ export default function Team() {
                   <DialogDescription className="sr-only">
                     Profile details for {member.name}, {member.designation}
                   </DialogDescription>
-                  
+
                   <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
                     <div className="relative w-full max-w-50 md:w-60 aspect-4/5 rounded-2xl overflow-hidden bg-black/5 dark:bg-white/5 shrink-0">
                       <Image
-                        src={member.image}
+                        src={member.avatar}
                         alt={`${member.name} - ${member.designation}`}
                         width={300}
                         height={375}
