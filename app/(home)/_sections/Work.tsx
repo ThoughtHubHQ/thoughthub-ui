@@ -19,6 +19,15 @@ const projects = [
   },
   {
     id: 2,
+    title: "Foto Perfection Lab",
+    category: "Photo Editing Service",
+    description:
+      "A professional photo editing service website that offers high-quality image retouching, color correction, and enhancement services for photographers and businesses.",
+    image: "/showcase/FotoPerfectionLab.png",
+    liveUrl: "https://fotoperfectionlab.com",
+  },
+  {
+    id: 3,
     title: "Nature Reatreat",
     category: "Reservation System",
     description:
@@ -27,7 +36,7 @@ const projects = [
     liveUrl: "https://nature-retreat.vercel.app",
   },
   {
-    id: 3,
+    id: 4,
     title: "FitLife Gym",
     category: "Professional Website",
     description:
