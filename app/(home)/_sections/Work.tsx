@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { roxborough } from "@/lib/font";
 import { Button } from "@/components/ui/button";
@@ -61,7 +62,10 @@ export default function Work() {
             <h2
               className={`${roxborough.className} text-3xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-tight mb-4`}
             >
-              Our <span className="italic font-light dark:text-[#e7eacd]">Showcase</span>
+              Our{" "}
+              <span className="italic font-light dark:text-[#e7eacd]">
+                Showcase
+              </span>
             </h2>
             <p className="text-sm lg:text-lg text-black/70 dark:text-white/70 font-light">
               A curated look at some of the digital experiences we&apos;ve
@@ -69,12 +73,14 @@ export default function Work() {
             </p>
           </div>
           <div className="hidden md:flex">
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto px-3 py-5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
-            >
-              Explore Our Work <ArrowUpRight />
-            </Button>
+            <Link href="/our-works">
+              <Button
+                variant="outline"
+                className="w-full sm:w-auto px-3 py-5 bg-transparent hover:bg-transparent rounded-full border-2 border-muted-foreground dark:border-[#e7eacd] text-black dark:text-[#e7eacd] font-medium hover:scale-105 transition-all duration-300"
+              >
+                Explore Our Work <ArrowUpRight />
+              </Button>
+            </Link>
           </div>
         </motion.div>
 
@@ -116,13 +122,14 @@ export default function Work() {
           ))}
         </div>
         <div className="flex md:hidden justify-center mt-8">
+          <Link href="/our-works" className="w-full">
           <Button
             variant="outline"
-            className="px-3 lg:px-6 py-4.5 lg:py-6 text-xs md:text-base rounded-full bg-transparent hover:bg-black hover:text-[#e7eacd] dark:hover:bg-[#e7eacd] dark:hover:text-black border-2 border-black/20 dark:border-[#e7eacd]/20 text-black dark:text-[#e7eacd] font-medium transition-all duration-300 group"
+            className="px-3 lg:px-6 py-4.5 lg:py-6 text-xs md:text-base rounded-full bg-[#c3c7ae] hover:bg-black hover:text-[#e7eacd] dark:hover:bg-[#e7eacd] dark:hover:text-black border-2 border-black/20 dark:border-[#e7eacd]/20 text-black dark:text-[#e7eacd] font-medium transition-all duration-300 group w-full"
           >
             View All Projects
             <ArrowUpRight />
-          </Button>
+          </Button></Link>
         </div>
       </div>
     </section>
