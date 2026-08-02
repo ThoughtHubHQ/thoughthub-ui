@@ -32,7 +32,7 @@ const teamMembers = [
   {
     employeeId: "TH102",
     name: "MD Tanim Hossain",
-    designation: "Co-Founder & CFO, Marketing Lead",
+    designation: "CFO, Marketing Lead",
     image: "/teams/tanim.jpg",
     bio: "Tanim drives the financial and marketing engines of the agency. His unique background in both numbers and narrative allows him to craft marketing strategies that are not only highly creative but also deeply analytical and conversion-focused.",
     email: "ccttanim@thoughthubhq.com",

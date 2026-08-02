@@ -35,6 +35,7 @@ export default function Header() {
           : "bg-transparent py-4 lg:py-5"
       }`}
     >
+      
       <div className="relative w-full px-6 flex justify-between items-center max-w-360 mx-auto">
         <Link
           href="/"
