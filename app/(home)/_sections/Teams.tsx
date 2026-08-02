@@ -111,7 +111,7 @@ export default function Team() {
                       alt={`${member.name} - ${member.designation}`}
                       width={400}
                       height={500}
-                      className="object-cover w-full h-full grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                      className="object-cover w-full h-full lg:grayscale lg:group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
                     />
                   </div>
 
