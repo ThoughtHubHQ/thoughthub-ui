@@ -69,12 +69,12 @@ export default function Work() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 ">
           {projects.map((project, index) => (
             <a href={project.liveUrl} target="_blank" key={project.id}>
               <div
                 className={`group flex flex-col ${
-                  index % 2 !== 0 ? "md:mt-24" : ""
+                  index % 2 !== 0 ? "md:mt-20" : ""
                 }`}
               >
                 <div className="relative w-fit rounded-2xl overflow-hidden mb-6 bg-black/5 dark:bg-white/5">
