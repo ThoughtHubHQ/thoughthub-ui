@@ -12,7 +12,7 @@ import { BrandAssets } from "@/lib/asset";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BrandAssets.mainUrl),
-  title: `${BrandAssets.name} - ${BrandAssets.slogan}`,
+  title: `${BrandAssets.name} | ${BrandAssets.slogan}`,
   description: BrandAssets.description,
   openGraph: {
     title: BrandAssets.name,
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: BrandAssets.SocialMediaPreview,
         width: 1200,
         height: 630,
-        alt: `${BrandAssets.name} – Innovative Web & Mobile Solutions`,
+        alt: `${BrandAssets.name} | Innovative Web & Mobile Solutions`,
       },
     ],
   },
