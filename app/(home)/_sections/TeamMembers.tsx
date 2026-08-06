@@ -17,9 +17,9 @@ import {
 } from "@/components/ui/dialog";
 import { Mail } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
-import { teamMembers } from "@/lib/teamMembers";
+import { teamMembers } from "@/lib/teams";
 
-export default function Team() {
+export default function TeamMembers() {
   return (
     <section className="w-full py-6 lg:py-10 bg-transparent mb-10" id="team">
       <div className="max-w-360 mx-auto px-6 lg:px-8">

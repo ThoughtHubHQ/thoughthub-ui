@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { roxborough } from "@/lib/font";
 import { BrandAssets } from "@/lib/asset";
@@ -12,14 +11,77 @@ import {
 } from "@/lib/framer-animation";
 import Barcode from "react-barcode";
 import QRCode from "react-qr-code";
-import { teamMembers } from "@/lib/teamMembers";
+import { teamMembers } from "@/lib/teams";
+import * as htmlToImage from "html-to-image";
 
 export default function IdCardShowcase() {
-  // Added state to track which card is currently flipped via click/tap
   const [flippedId, setFlippedId] = useState<string | null>(null);
 
+  const getSrc = (src: any) => (typeof src === "string" ? src : src.src);
+
+  /* ======================= DOWNLOAD HANDLER ======================= */
+  const handleDownload = async (employeeId: string, employeeName: string) => {
+    const frontNode = document.getElementById(`front-${employeeId}`);
+    const backNode = document.getElementById(`back-${employeeId}`);
+
+    if (!frontNode || !backNode) return;
+
+    try {
+      const frontDataUrl = await htmlToImage.toPng(frontNode, {
+        quality: 1,
+        pixelRatio: 6,
+        cacheBust: true,
+        style: { transform: "none" },
+      });
+      
+      const backDataUrl = await htmlToImage.toPng(backNode, {
+        quality: 1,
+        pixelRatio: 6,
+        cacheBust: true,
+        style: { transform: "none" },
+      });
+
+      const loadImage = (src: string): Promise<HTMLImageElement> => {
+        return new Promise((resolve, reject) => {
+          const img = new window.Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = src;
+        });
+      };
+
+      const frontImg = await loadImage(frontDataUrl);
+      const backImg = await loadImage(backDataUrl);
+
+      const canvas = document.createElement("canvas");
+      const gap = 100; 
+      canvas.width = frontImg.width + backImg.width + gap;
+      canvas.height = Math.max(frontImg.height, backImg.height);
+      
+      const ctx = canvas.getContext("2d");
+      
+      if (ctx) {
+        ctx.fillStyle = "transparent";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.drawImage(frontImg, 0, 0);
+        ctx.drawImage(backImg, frontImg.width + gap, 0);
+        
+        const combinedDataUrl = canvas.toDataURL("image/png");
+        const formattedName = employeeName.replace(/\s+/g, "_");
+        
+        const link = document.createElement("a");
+        link.download = `${formattedName}_ID_Card.png`;
+        link.href = combinedDataUrl;
+        link.click();
+      }
+    } catch (error) {
+      console.error("Error generating ID card image:", error);
+    }
+  };
+
   return (
-    <section className="w-full pt-5 pb-10 bg-transparent overflow-hidden">
+    <section className="w-full pt-5 pb-24 bg-transparent overflow-hidden">
       <div className="max-w-360 mx-auto px-6 lg:px-8">
         <motion.div
           variants={smoothFadeUpVariants}
@@ -49,11 +111,10 @@ export default function IdCardShowcase() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-8 lg:gap-12"
+          className="flex flex-wrap justify-center gap-8 lg:gap-16"
         >
           {teamMembers.map((member) => (
             <motion.div key={member.employeeId} variants={itemVariants}>
-              {/* Perspective container for the 3D flip effect - Added onClick and cursor-pointer */}
               <div
                 className="group relative w-70 h-111.25 perspective-[1000px] cursor-pointer"
                 onClick={() =>
@@ -62,7 +123,6 @@ export default function IdCardShowcase() {
                   )
                 }
               >
-                {/* Inner wrapper that actually rotates - Changed to lg:group-hover and dynamic class based on state */}
                 <div
                   className={`w-full h-full transition-transform duration-700 transform-3d lg:group-hover:transform-[rotateY(180deg)] ${
                     flippedId === member.employeeId
@@ -71,55 +131,37 @@ export default function IdCardShowcase() {
                   }`}
                 >
                   {/* ======================= FRONT OF CARD ======================= */}
-                  <div className="absolute inset-0 bg-[#e6e9cc] dark:bg-[#0a0a0a] rounded-2xl border border-black/10 dark:border-white/10 shadow-lg flex flex-col items-center px-6 py-8 overflow-hidden backface-hidden">
-                    {/* Light Mode Pattern */}
-                    <div
-                      className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none"
-                      style={{
-                        backgroundImage:
-                          "radial-gradient(#000 0.8px, transparent 0.8px)",
-                        backgroundSize: "10px 10px",
-                      }}
-                    />
-                    {/* Dark Mode Pattern */}
-                    <div
-                      className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none"
-                      style={{
-                        backgroundImage:
-                          "radial-gradient(#e7eacd 0.8px, transparent 0.8px)",
-                        backgroundSize: "10px 10px",
-                      }}
-                    />
+                  <div
+                    id={`front-${member.employeeId}`}
+                    className="absolute inset-0 bg-[#e6e9cc] dark:bg-[#0a0a0a] rounded-2xl border border-black/10 dark:border-white/10 shadow-lg flex flex-col items-center px-6 py-8 overflow-hidden backface-hidden"
+                  >
+                    <div className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none bg-[radial-gradient(#000_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
+                    <div className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none bg-[radial-gradient(#e7eacd_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
 
                     <div className="mt-4 flex flex-col items-center z-20 w-full">
                       <div
                         className={`${roxborough.className} text-xl font-bold text-black dark:text-[#e7eacd] tracking-wide flex items-center`}
                       >
-                        <Image
-                          src={BrandAssets.darkModeLogo}
+                        <img
+                          src={getSrc(BrandAssets.darkModeLogo)}
                           alt="Logo"
-                          width={30}
-                          height={30}
-                          className="mr-2 hidden dark:block"
+                          className="w-[30px] h-[30px] mr-2 hidden dark:block"
                         />
-                        <Image
-                          src={BrandAssets.lightModeLogo}
+                        <img
+                          src={getSrc(BrandAssets.lightModeLogo)}
                           alt="Logo"
-                          width={30}
-                          height={30}
-                          className="mr-2 block dark:hidden"
+                          className="w-[30px] h-[30px] mr-2 block dark:hidden"
                         />
                         {BrandAssets.name}
                       </div>
                     </div>
 
                     <div className="mt-8 relative w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-[#1a1a1a] shadow-lg z-20 bg-black/5">
-                      <Image
-                        src={member.avatar}
+                      <img
+                        src={getSrc(member.avatar)}
                         alt={member.name}
-                        width={128}
-                        height={128}
                         className="object-cover w-full h-full"
+                        crossOrigin="anonymous"
                       />
                     </div>
 
@@ -136,7 +178,6 @@ export default function IdCardShowcase() {
                       </div>
                     </div>
 
-                    {/* Exact spacing and structure maintained from original snippet */}
                     <div className="mt-auto flex flex-col items-center w-full z-20">
                       <div className="w-full h-px bg-black/10 dark:bg-white/10 mb-3" />
                       <div className="flex flex-col items-center gap-1">
@@ -159,24 +200,12 @@ export default function IdCardShowcase() {
                   </div>
 
                   {/* ======================= BACK OF CARD ======================= */}
-                  <div className="absolute inset-0 bg-[#e6e9cc] dark:bg-[#0a0a0a] rounded-2xl border border-black/10 dark:border-white/10 shadow-2xl flex flex-col px-6 py-8 overflow-hidden backface-hidden transform-[rotateY(180deg)]">
-                    {/* Background Patterns */}
-                    <div
-                      className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none"
-                      style={{
-                        backgroundImage:
-                          "radial-gradient(#000 0.8px, transparent 0.8px)",
-                        backgroundSize: "10px 10px",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none"
-                      style={{
-                        backgroundImage:
-                          "radial-gradient(#e7eacd 0.8px, transparent 0.8px)",
-                        backgroundSize: "10px 10px",
-                      }}
-                    />
+                  <div
+                    id={`back-${member.employeeId}`}
+                    className="absolute inset-0 bg-[#e6e9cc] dark:bg-[#0a0a0a] rounded-2xl border border-black/10 dark:border-white/10 shadow-2xl flex flex-col px-6 py-8 overflow-hidden backface-hidden transform-[rotateY(180deg)]"
+                  >
+                    <div className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none bg-[radial-gradient(#000_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
+                    <div className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none bg-[radial-gradient(#e7eacd_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
 
                     <div className="mt-6 flex flex-col z-20 h-full">
                       <h4 className="text-[10px] font-bold tracking-widest uppercase text-black/50 dark:text-[#e7eacd]/70 text-center mb-4 border-b border-black/10 dark:border-white/10 pb-2">
@@ -244,29 +273,23 @@ export default function IdCardShowcase() {
                         </div>
                       </div>
 
-                      {/* Exact spacing and structure maintained from original snippet */}
-                      <div className="mt-auto pt-3  flex justify-between items-end">
+                      <div className="mt-auto pt-3 flex justify-between items-end">
                         <div className="flex flex-col items-start">
-                          <Image
-                            src={BrandAssets.ceoSignLight}
-                            alt="Logo"
-                            width={80}
-                            height={30}
-                            className="mr-2 block dark:hidden"
+                          <img
+                            src={getSrc(BrandAssets.ceoSignLight)}
+                            alt="Signature"
+                            className="w-[80px] h-[30px] mr-2 block dark:hidden"
                           />
-                          <Image
-                            src={BrandAssets.ceoSignDark}
-                            alt="Logo"
-                            width={80}
-                            height={30}
-                            className="mr-2 hidden dark:block"
+                          <img
+                            src={getSrc(BrandAssets.ceoSignDark)}
+                            alt="Signature"
+                            className="w-[80px] h-[30px] mr-2 hidden dark:block"
                           />
-                          <span className="text-[6px] uppercase tracking-widest text-black/50 dark:text-white/50 border-t border-black/20 dark:border-white/20  mt-1 w-full">
+                          <span className="text-[6px] uppercase tracking-widest text-black/50 dark:text-white/50 border-t border-black/20 dark:border-white/20 mt-1 w-full">
                             Authorized Signature
                           </span>
                         </div>
 
-                        {/* Real QR - exact w-8 h-8 size, no bg, pure transparent */}
                         <div className="w-8 h-8 flex items-center justify-center opacity-80 dark:opacity-90 dark:invert">
                           <QRCode
                             value="https://thoughthubhq.com/#team"
@@ -288,6 +311,35 @@ export default function IdCardShowcase() {
                     </div>
                   </div>
                 </div>
+
+                {/* ======================= DOWNLOAD BUTTON ======================= */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDownload(member.employeeId, member.name);
+                  }}
+                  className={`absolute -bottom-14 left-1/2 -translate-x-1/2 cursor-pointer transition-all duration-300 bg-black text-white dark:bg-[#e7eacd] dark:text-black text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-full font-bold shadow-lg z-50 flex items-center gap-2 ${
+                    flippedId === member.employeeId
+                      ? "opacity-100 visible"
+                      : "opacity-0 invisible lg:group-hover:opacity-100 lg:group-hover:visible"
+                  }`}
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    />
+                  </svg>
+                  Download
+                </button>
               </div>
             </motion.div>
           ))}
