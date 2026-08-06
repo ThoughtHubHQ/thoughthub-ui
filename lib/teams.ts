@@ -53,7 +53,7 @@ export const teamMembers = [
     emergencyContact: "+880 1756-817983",
     avatar: "/teams/ruhul.jpg",
     bio: "Ruhul specializes in building robust, scalable backend systems and seamless frontend interfaces. His code is clean, efficient, and acts as the structural backbone for some of our most complex digital platforms.",
-    linkedin: "https://linkedin.com/in/md-ruhul-amin-b44528202",
+    linkedin: "https://linkedin.com/in/iam-ruhulamin",
   },
   {
     employeeId: "TH204",
