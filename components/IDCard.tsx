@@ -13,6 +13,7 @@ import Barcode from "react-barcode";
 import QRCode from "react-qr-code";
 import { teamMembers } from "@/lib/teams";
 import * as htmlToImage from "html-to-image";
+import { ArrowDown } from "lucide-react";
 
 export default function IdCardShowcase() {
   const [flippedId, setFlippedId] = useState<string | null>(null);
@@ -33,7 +34,7 @@ export default function IdCardShowcase() {
         cacheBust: true,
         style: { transform: "none" },
       });
-      
+
       const backDataUrl = await htmlToImage.toPng(backNode, {
         quality: 1,
         pixelRatio: 6,
@@ -54,22 +55,22 @@ export default function IdCardShowcase() {
       const backImg = await loadImage(backDataUrl);
 
       const canvas = document.createElement("canvas");
-      const gap = 100; 
+      const gap = 100;
       canvas.width = frontImg.width + backImg.width + gap;
       canvas.height = Math.max(frontImg.height, backImg.height);
-      
+
       const ctx = canvas.getContext("2d");
-      
+
       if (ctx) {
         ctx.fillStyle = "transparent";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
+
         ctx.drawImage(frontImg, 0, 0);
         ctx.drawImage(backImg, frontImg.width + gap, 0);
-        
+
         const combinedDataUrl = canvas.toDataURL("image/png");
         const formattedName = employeeName.replace(/\s+/g, "_");
-        
+
         const link = document.createElement("a");
         link.download = `${formattedName}_ID_Card.png`;
         link.href = combinedDataUrl;
@@ -310,36 +311,20 @@ export default function IdCardShowcase() {
                       </p>
                     </div>
                   </div>
-                </div>
 
-                {/* ======================= DOWNLOAD BUTTON ======================= */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDownload(member.employeeId, member.name);
-                  }}
-                  className={`absolute -bottom-14 left-1/2 -translate-x-1/2 cursor-pointer transition-all duration-300 bg-black text-white dark:bg-[#e7eacd] dark:text-black text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-full font-bold shadow-lg z-50 flex items-center gap-2 ${
-                    flippedId === member.employeeId
-                      ? "opacity-100 visible"
-                      : "opacity-0 invisible lg:group-hover:opacity-100 lg:group-hover:visible"
-                  }`}
-                >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                    />
-                  </svg>
-                  Download
-                </button>
+                  {/* ======================= FLOATING DOWNLOAD BUTTON ======================= */}
+                  <div className="absolute inset-x-0 bottom-8 flex justify-center z-50 backface-hidden transform-[rotateY(180deg)] pointer-events-none">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDownload(member.employeeId, member.name);
+                      }}
+                      className="pointer-events-auto cursor-pointer bg-[#3a420c] text-white dark:bg-[#e7eacd] dark:text-black p-3.5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.5)] dark:shadow-[0_10px_40px_rgba(255,255,255,0.25)] hover:scale-110 active:scale-95 transition-transform duration-300 flex items-center justify-center"
+                    >
+                      <ArrowDown className="w-5 h-5 stroke-2" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
