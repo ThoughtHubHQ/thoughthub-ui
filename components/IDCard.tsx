@@ -14,6 +14,7 @@ import QRCode from "react-qr-code";
 import { teamMembers } from "@/lib/teams";
 import * as htmlToImage from "html-to-image";
 import { ArrowDown } from "lucide-react";
+import Image from "next/image";
 
 export default function IdCardShowcase() {
   const [flippedId, setFlippedId] = useState<string | null>(null);
@@ -276,15 +277,19 @@ export default function IdCardShowcase() {
 
                       <div className="mt-auto pt-3 flex justify-between items-end">
                         <div className="flex flex-col items-start">
-                          <img
+                          <Image
+                          width={80}
+                          height={30}
                             src={getSrc(BrandAssets.ceoSignLight)}
                             alt="Signature"
-                            className="w-[80px] h-[30px] mr-2 block dark:hidden"
+                            className="w-20 h-7.5 mr-2 block dark:hidden"
                           />
-                          <img
+                          <Image
+                            width={80}
+                            height={30}
                             src={getSrc(BrandAssets.ceoSignDark)}
                             alt="Signature"
-                            className="w-[80px] h-[30px] mr-2 hidden dark:block"
+                            className="w-20 h-7.5 mr-2 hidden dark:block"
                           />
                           <span className="text-[6px] uppercase tracking-widest text-black/50 dark:text-white/50 border-t border-black/20 dark:border-white/20 mt-1 w-full">
                             Authorized Signature
@@ -306,8 +311,8 @@ export default function IdCardShowcase() {
                         </div>
                       </div>
 
-                      <p className="text-[7px] text-center text-black/40 dark:text-white/40 mt-3 uppercase tracking-wider">
-                        If found, please return to {BrandAssets.name}
+                      <p className="text-[7px] text-center text-black/40 dark:text-white/40 mt-3 tracking-wider">
+                       <span className="uppercase"> If found, please return to</span> <span className={`font-extrabold text-[10px] ${roxborough.className}`}>{BrandAssets.name}</span>
                       </p>
                     </div>
                   </div>
