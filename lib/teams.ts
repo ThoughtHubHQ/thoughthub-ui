@@ -22,7 +22,7 @@ export const teamMembers = [
     email: "tanim@thoughthubhq.com",
     phone: "+880 1853 431544",
     bloodGroup: "B-",
-    emergencyContact: "+880 1822 000000",
+    emergencyContact: "+880 1943 329650",
     avatar: "/teams/tanim.jpg",
     bio: "Tanim drives the financial and marketing engines of the agency. His unique background in both numbers and narrative allows him to craft marketing strategies that are not only highly creative but also deeply analytical and conversion-focused.",
     linkedin: "https://linkedin.com/in/ccttanim",
