@@ -45,8 +45,8 @@ export default function RootLayout({
     "@type": "WebSite",
     name: BrandAssets.name,
     alternateName: [
-      BrandAssets.name.replace(/\s+/g, ""), 
-      BrandAssets.name.toLowerCase()
+      BrandAssets.name.replace(/\s+/g, ""),
+      BrandAssets.name.toLowerCase(),
     ],
     url: BrandAssets.mainUrl,
   };
@@ -55,7 +55,12 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(inter.className, "font-sans", "scroll-smooth")}
+      className={cn(
+        inter.className,
+        "font-sans",
+        "scroll-pt-13",
+        "scroll-smooth",
+      )}
     >
       <body className="font-sans antialiased">
         <script
