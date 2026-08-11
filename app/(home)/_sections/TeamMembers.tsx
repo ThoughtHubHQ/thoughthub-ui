@@ -83,8 +83,8 @@ export default function TeamMembers() {
                   </div>
                 </DialogTrigger>
 
-                {/* Employee Details */}
-                <DialogContent className="w-[95vw] md:max-w-2xl lg:max-w-5xl xl:max-w-6xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 md:p-9 rounded-3xl max-h-[95vh] overflow-y-auto overflow-x-hidden gap-0">
+                {/* Dialog Content: Employee Details */}
+                <DialogContent className="w-[95vw] md:max-w-2xl lg:max-w-5xl xl:max-w-6xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 md:px-8 rounded-3xl max-h-[95vh] overflow-y-auto overflow-x-hidden gap-0 z-1000">
                   <DialogTitle className="sr-only">
                     {member.name}&apos;s Profile
                   </DialogTitle>
@@ -152,6 +152,11 @@ export default function TeamMembers() {
                       <IDCard member={member} />
                     </div>
                   </div>
+                  <span className="lg:mr-10 pt-3 lg:pt-5 text-center md:text-end text-xs text-black/50 dark:text-white/70">
+                    <span className="md:hidden">Click</span>
+                    <span className="hidden md:inline">Hover</span> the ID Card
+                    for more details
+                  </span>
                 </DialogContent>
               </Dialog>
             </motion.div>
