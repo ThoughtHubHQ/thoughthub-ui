@@ -137,32 +137,38 @@ export default function IdCardShowcase() {
                     id={`front-${member.employeeId}`}
                     className="absolute inset-0 bg-[#e6e9cc] dark:bg-[#0a0a0a] rounded-2xl border border-black/10 dark:border-white/10 shadow-lg flex flex-col items-center px-6 py-8 overflow-hidden backface-hidden"
                   >
-                    <div className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none bg-[radial-gradient(#000_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
-                    <div className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none bg-[radial-gradient(#e7eacd_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
+                    <div className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none bg-[radial-gradient(#000_0.8px,transparent_0.8px)] bg-size-[10px_10px]" />
+                    <div className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none bg-[radial-gradient(#e7eacd_0.8px,transparent_0.8px)] bg-size-[10px_10px]" />
 
                     <div className="mt-4 flex flex-col items-center z-20 w-full">
                       <div
                         className={`${roxborough.className} text-xl font-bold text-black dark:text-[#e7eacd] tracking-wide flex items-center`}
                       >
-                        <img
+                        <Image
+                          width={30}
+                          height={30}
                           src={getSrc(BrandAssets.darkModeLogo)}
                           alt="Logo"
-                          className="w-[30px] h-[30px] mr-2 hidden dark:block"
+                          className="w-7.5 h-7.5 mr-2 hidden dark:block"
                         />
-                        <img
+                        <Image
+                          width={30}
+                          height={30}
                           src={getSrc(BrandAssets.lightModeLogo)}
                           alt="Logo"
-                          className="w-[30px] h-[30px] mr-2 block dark:hidden"
+                          className="w-7.5 h-7.5 mr-2 block dark:hidden"
                         />
                         {BrandAssets.name}
                       </div>
                     </div>
 
                     <div className="mt-8 relative w-32 h-32 rounded-full overflow-hidden border-4 border-white dark:border-[#1a1a1a] shadow-lg z-20 bg-black/5">
-                      <img
+                      <Image
                         src={getSrc(member.avatar)}
                         alt={member.name}
                         className="object-cover w-full h-full"
+                        width={128}
+                        height={128}
                         crossOrigin="anonymous"
                       />
                     </div>
@@ -184,7 +190,7 @@ export default function IdCardShowcase() {
                       <div className="w-full h-px bg-black/10 dark:bg-white/10 mb-3" />
                       <div className="flex flex-col items-center gap-1">
                         <p className="text-black/50 dark:text-white/50 text-[11px] font-mono tracking-widest uppercase">
-                          EMP ID: {member.employeeId}
+                          ID: {member.employeeId}
                         </p>
                         <div className="flex h-4 items-center opacity-70 dark:opacity-90 dark:invert mt-1">
                           <Barcode
@@ -206,8 +212,8 @@ export default function IdCardShowcase() {
                     id={`back-${member.employeeId}`}
                     className="absolute inset-0 bg-[#e6e9cc] dark:bg-[#0a0a0a] rounded-2xl border border-black/10 dark:border-white/10 shadow-2xl flex flex-col px-6 py-8 overflow-hidden backface-hidden transform-[rotateY(180deg)]"
                   >
-                    <div className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none bg-[radial-gradient(#000_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
-                    <div className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none bg-[radial-gradient(#e7eacd_0.8px,transparent_0.8px)] bg-[size:10px_10px]" />
+                    <div className="absolute inset-0 opacity-[0.1] dark:hidden pointer-events-none bg-[radial-gradient(#000_0.8px,transparent_0.8px)] bg-size-[10px_10px]" />
+                    <div className="absolute inset-0 opacity-[0.15] hidden dark:block pointer-events-none bg-[radial-gradient(#e7eacd_0.8px,transparent_0.8px)] bg-size-[10px_10px]" />
 
                     <div className="mt-6 flex flex-col z-20 h-full">
                       <h4 className="text-[10px] font-bold tracking-widest uppercase text-black/50 dark:text-[#e7eacd]/70 text-center mb-4 border-b border-black/10 dark:border-white/10 pb-2">
@@ -278,8 +284,8 @@ export default function IdCardShowcase() {
                       <div className="mt-auto pt-3 flex justify-between items-end">
                         <div className="flex flex-col items-start">
                           <Image
-                          width={80}
-                          height={30}
+                            width={80}
+                            height={30}
                             src={getSrc(BrandAssets.ceoSignLight)}
                             alt="Signature"
                             className="w-20 h-7.5 mr-2 block dark:hidden"
@@ -298,7 +304,7 @@ export default function IdCardShowcase() {
 
                         <div className="w-8 h-8 flex items-center justify-center opacity-80 dark:opacity-90 dark:invert">
                           <QRCode
-                            value="https://thoughthubhq.com/#team"
+                            value={`${BrandAssets.mainUrl}/#team`}
                             size={32}
                             bgColor="transparent"
                             fgColor="#000000"
@@ -312,7 +318,15 @@ export default function IdCardShowcase() {
                       </div>
 
                       <p className="text-[7px] text-center text-black/40 dark:text-white/40 mt-3 tracking-wider">
-                       <span className="uppercase"> If found, please return to</span> <span className={`font-extrabold text-[10px] ${roxborough.className}`}>{BrandAssets.name}</span>
+                        <span className="uppercase">
+                          {" "}
+                          If found, please return to
+                        </span>{" "}
+                        <span
+                          className={`font-extrabold text-[10px] ${roxborough.className}`}
+                        >
+                          {BrandAssets.name}
+                        </span>
                       </p>
                     </div>
                   </div>
