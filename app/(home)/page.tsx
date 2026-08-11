@@ -3,7 +3,6 @@ import Work from "./_sections/Work";
 import FAQ from "./_sections/FAQ";
 import Contact from "./_sections/Contact";
 import TeamMembers from "./_sections/TeamMembers";
-import IdCardShowcase from "@/components/IDCard";
 
 export default function Home() {
   return (
@@ -11,7 +10,6 @@ export default function Home() {
       <Hero />
       <Work />
       <TeamMembers/>
-      <IdCardShowcase/>
       <FAQ/>
       <Contact/>
     </div>
