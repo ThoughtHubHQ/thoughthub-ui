@@ -136,14 +136,14 @@ export default function IDCard({ member }: { member: any }) {
             />
           </div>
 
-          <div className="mt-6 flex flex-col items-center text-center z-20 w-full">
+          <div className="mt-5 flex flex-col items-center text-center z-20 w-full">
             <h3
-              className={`${roxborough.className} text-2xl font-bold text-black dark:text-[#fafaf8] leading-tight`}
+              className={`${roxborough.className} text-3xl font-bold text-black dark:text-[#fafaf8] leading-tight`}
             >
-              {member.nickName || member.name.split(" ")[0]}
+              {member.nickName}
             </h3>
             <div className="mt-3 inline-block bg-black dark:bg-[#e7eacd] px-4 py-1.5 rounded-full">
-              <p className="text-[#e7eacd] dark:text-black text-[9px] font-bold uppercase tracking-[0.2em]">
+              <p className="text-[#e7eacd] dark:text-black text-[11px] font-bold uppercase tracking-[0.2em]">
                 {member.designation}
               </p>
             </div>

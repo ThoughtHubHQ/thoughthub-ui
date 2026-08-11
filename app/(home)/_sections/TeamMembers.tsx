@@ -84,7 +84,7 @@ export default function TeamMembers() {
                 </DialogTrigger>
 
                 {/* Dialog Content: Employee Details */}
-                <DialogContent className="w-[95vw] md:max-w-2xl lg:max-w-5xl xl:max-w-6xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 md:px-8 rounded-3xl max-h-[95vh] overflow-y-auto overflow-x-hidden gap-0 z-1000">
+                <DialogContent className="w-[95vw] md:max-w-2xl lg:max-w-5xl xl:max-w-6xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 md:px-10 md:pt-10 rounded-3xl max-h-[95vh] overflow-y-auto overflow-x-hidden gap-0 z-1000">
                   <DialogTitle className="sr-only">
                     {member.name}&apos;s Profile
                   </DialogTitle>
