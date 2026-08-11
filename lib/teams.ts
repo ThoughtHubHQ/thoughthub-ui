@@ -1,4 +1,4 @@
-export const teamMembers = [
+export const teams = [
   {
     employeeId: "TH101",
     name: "Ashikur Rahman Bhuiyan",

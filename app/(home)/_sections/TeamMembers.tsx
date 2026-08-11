@@ -17,7 +17,8 @@ import {
 } from "@/components/ui/dialog";
 import { Mail } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
-import { teamMembers } from "@/lib/teams";
+import { teams } from "@/lib/teams";
+import IDCard from "@/components/IDCard";
 
 export default function TeamMembers() {
   return (
@@ -53,7 +54,7 @@ export default function TeamMembers() {
           viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-10"
         >
-          {teamMembers.map((member) => (
+          {teams.map((member) => (
             <motion.div key={member.employeeId} variants={itemVariants}>
               <Dialog>
                 <DialogTrigger className="group flex flex-col items-center sm:items-start sm:text-left w-full text-left outline-none">
@@ -82,15 +83,18 @@ export default function TeamMembers() {
                   </div>
                 </DialogTrigger>
 
-                <DialogContent className="md:min-w-xl lg:min-w-3xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 md:p-8 rounded-3xl overflow-hidden gap-0">
+                {/* Employee Details */}
+                <DialogContent className="w-[95vw] md:max-w-2xl lg:max-w-5xl xl:max-w-6xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 p-6 md:p-10 rounded-3xl max-h-[95vh] overflow-y-auto overflow-x-hidden gap-0">
                   <DialogTitle className="sr-only">
                     {member.name}&apos;s Profile
                   </DialogTitle>
+
                   <DialogDescription className="sr-only">
                     Profile details for {member.name}, {member.designation}
                   </DialogDescription>
 
-                  <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center">
+                    {/* Employee Avatar */}
                     <div className="relative w-full max-w-50 md:w-60 aspect-4/5 rounded-2xl overflow-hidden bg-black/5 dark:bg-white/5 shrink-0">
                       <Image
                         src={member.avatar}
@@ -101,7 +105,8 @@ export default function TeamMembers() {
                       />
                     </div>
 
-                    <div className="flex flex-col flex-1 gap-4 text-center md:text-left mt-2 md:mt-0">
+                    {/* Employee Info */}
+                    <div className="flex flex-col flex-1 w-full gap-4 text-center lg:text-left mt-2 lg:mt-0">
                       <div className="flex flex-col gap-1">
                         <span className="text-xs font-semibold tracking-widest uppercase text-black/50 dark:text-[#e7eacd]/70">
                           ID: {member.employeeId}
@@ -116,13 +121,13 @@ export default function TeamMembers() {
                         </p>
                       </div>
 
-                      <div className="w-8 h-px bg-black/20 dark:bg-white/20 mx-auto md:mx-0 my-2" />
+                      <div className="w-8 h-px bg-black/20 dark:bg-white/20 mx-auto lg:mx-0 my-2" />
 
                       <p className="text-black/70 dark:text-white/70 text-sm font-light leading-relaxed">
                         {member.bio}
                       </p>
 
-                      <div className="flex items-center justify-center md:justify-start gap-4 mt-4">
+                      <div className="flex items-center justify-center lg:justify-start gap-4 mt-4">
                         <a
                           href={`mailto:${member.email}`}
                           className="p-3 rounded-full bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 text-black dark:text-white hover:text-green-800 transition-colors"
@@ -140,6 +145,11 @@ export default function TeamMembers() {
                           <FaLinkedin className="w-5 h-5" strokeWidth={1.5} />
                         </a>
                       </div>
+                    </div>
+
+                    {/* ID Card */}
+                    <div className="shrink-0 mt-6 lg:mt-0 flex justify-center w-full lg:w-auto pb-4 lg:pb-0">
+                      <IDCard member={member} />
                     </div>
                   </div>
                 </DialogContent>

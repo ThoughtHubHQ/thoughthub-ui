@@ -25,6 +25,7 @@ export default function Header() {
     { name: "Work", href: "/#showcase" },
     { name: "Services", href: "/services" },
     { name: "About Us", href: "/about-us" },
+    { name: "Team", href: "/#team" },
   ];
 
   return (
