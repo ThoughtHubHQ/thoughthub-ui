@@ -83,6 +83,8 @@ export default function ContactForm() {
         <Input
           type="text"
           id="name"
+          maxLength={50}
+          minLength={3}
           placeholder="eg. John Doe"
           className="py-6 border-2 border-black dark:border-[#e7eacd] text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
           {...register("name")}
@@ -104,6 +106,8 @@ export default function ContactForm() {
             type="text"
             id="phone"
             placeholder="eg. 01518903860"
+            minLength={10}
+            maxLength={15}
             className="py-6 border-2 border-black dark:border-[#e7eacd] w-full text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
             {...register("phone")}
           />
@@ -119,8 +123,10 @@ export default function ContactForm() {
             Email
           </Label>
           <Input
-            type="text"
+            type="email"
             id="email"
+            minLength={6}
+            maxLength={50}
             placeholder="eg. admin@thoughthubhq.com"
             className="py-6 border-2 border-black dark:border-[#e7eacd] w-full text-black dark:text-[#fafaf8] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
             {...register("email")}
@@ -139,6 +145,8 @@ export default function ContactForm() {
           Message
         </Label>
         <Textarea
+          minLength={10}
+          maxLength={500}
           id="message"
           placeholder="eg. I want to discuss a project idea..."
           className="py-6 border-2 border-black dark:border-[#e7eacd] text-black dark:text-[#fafaf8] bg-transparent min-h-37.5 resize-none focus-visible:ring-0 focus-visible:ring-offset-0"

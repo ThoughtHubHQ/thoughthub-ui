@@ -128,9 +128,9 @@ export default function AboutUs() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="pt-4">
-              <Link href="/#team">
+              <Link href="/#contact">
                 <Button className="px-6 py-6 rounded-full bg-black text-[#e7eacd] dark:bg-[#e7eacd] dark:text-black text-sm font-semibold hover:scale-105 transition-transform w-full lg:w-auto">
-                  Meet The Team <ArrowRight className="w-4 h-4" />
+                  Let&apos;s Talk About Your Project <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </motion.div>
