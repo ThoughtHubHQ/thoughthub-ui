@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import AboutUs from "./AboutUs";
+import TeamMembers from "../_sections/TeamMembers";
 
 export const metadata: Metadata = {
   title: "About Us | ThoughtHub",
@@ -11,6 +12,7 @@ export default function AboutUsPage() {
   return (
     <div>
       <AboutUs />
+      <TeamMembers/>
     </div>
   );
 }
