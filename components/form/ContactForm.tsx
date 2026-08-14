@@ -71,6 +71,10 @@ export default function ContactForm() {
     }
   };
 
+  setTimeout(() => {
+    setMessageSent("");
+  }, 5000);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <div className="mb-5">
