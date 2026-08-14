@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Turnstile } from "next-turnstile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Spinner } from "@/components/ui/spinner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +17,7 @@ const contactSchema = z.object({
   phone: z
     .string()
     .min(11, "Phone number must be at least 11 characters")
-    .max(11, "Phone number must be at most 11 characters"),
+    .max(15, "Phone number must be at most 15 characters"),
   email: z.string().email("Please enter a valid email"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
@@ -32,6 +32,7 @@ export default function ContactForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -62,6 +63,7 @@ export default function ContactForm() {
 
       setLoading(false);
       setMessageSent("Your message has been sent successfully!");
+      reset(); 
     } catch (error) {
       console.error("Error submitting form:", error);
       setLoading(false);
@@ -71,9 +73,14 @@ export default function ContactForm() {
     }
   };
 
-  setTimeout(() => {
-    setMessageSent("");
-  }, 5000);
+  useEffect(() => {
+    if (messageSent) {
+      const timer = setTimeout(() => {
+        setMessageSent("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [messageSent]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
