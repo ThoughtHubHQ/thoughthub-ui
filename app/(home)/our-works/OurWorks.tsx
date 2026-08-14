@@ -27,7 +27,7 @@ const projects = [
     category: "Photo Editing Service",
     description:
       "A professional photo editing service website that offers high-quality image retouching, color correction, and enhancement services for photographers and businesses.",
-    image: "/showcase/FotoPerfectionLab.png",
+    image: "/showcase/fpl.png",
     link: "https://fotoperfectionlab.com",
   },
   {
