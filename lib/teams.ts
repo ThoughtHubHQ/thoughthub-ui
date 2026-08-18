@@ -8,7 +8,7 @@ export const teams = [
     email: "ashik@thoughthubhq.com",
     phone: "+880 1518 903860",
     bloodGroup: "O+",
-    emergencyContact: "+880 1835 232410",
+    emergencyContact: "+880 1853 660115",
     avatar: "/teams/ashikurrb.png",
     bio: "Ashik is the visionary behind our agency, blending deep technical expertise with a sharp business acumen. With over a decade of experience in full-stack architecture, he leads our core development strategies while ensuring every project meets our rigorous standard of craftsmanship.",
     linkedin: "https://linkedin.com/in/ashikurrb",
