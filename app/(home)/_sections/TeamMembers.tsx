@@ -36,7 +36,10 @@ export default function TeamMembers() {
             <h2
               className={`${roxborough.className} text-3xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-[#fafaf8] tracking-tight leading-tight mb-4`}
             >
-              Meet The <span className="italic font-light dark:text-[#e7eacd]">Crafters</span>
+              Meet The{" "}
+              <span className="italic font-light dark:text-[#e7eacd]">
+                Crafters
+              </span>
             </h2>
             <p className="text-sm lg:text-lg text-black/70 dark:text-white/70 font-light">
               The dedicated minds and creative spirits behind our digital
@@ -93,20 +96,19 @@ export default function TeamMembers() {
 
                   <div className="flex flex-col lg:flex-row w-full min-h-[60vh]">
                     {/* Modal Left Image Bleed */}
-                    <div className="relative w-full lg:w-[40%] bg-black/5 dark:bg-white/5 shrink-0 min-h-80 lg:min-h-full">
+                    <div className="relative w-full lg:w-[35%] xl:w-[40%] bg-black/5 dark:bg-white/5 shrink-0 min-h-87.5 lg:min-h-0">
                       <Image
                         src={member.avatar}
                         alt={`${member.name} - ${member.designation}`}
                         width={600}
                         height={800}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-full h-full absolute inset-0"
                       />
                     </div>
 
                     {/* Modal Right Content Container */}
-                    <div className="flex flex-col justify-center w-full p-8 md:p-12 lg:p-16 gap-10">
-                      <div className="flex flex-col xl:flex-row justify-between gap-10 xl:gap-8 items-start w-full">
-                        
+                    <div className="flex flex-col justify-center w-full p-6 md:p-10 lg:p-10 xl:p-12 gap-8 lg:gap-10">
+                      <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-6 xl:gap-8 items-start w-full">
                         {/* Member Information */}
                         <div className="flex flex-col gap-5 max-w-xl">
                           <div className="flex flex-col gap-2">
@@ -114,7 +116,7 @@ export default function TeamMembers() {
                               ID: {member.employeeId}
                             </span>
                             <h3
-                              className={`${roxborough.className} text-4xl md:text-5xl font-bold text-black dark:text-[#fafaf8] leading-none`}
+                              className={`${roxborough.className} text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-[#fafaf8] leading-tight wrap-break-word`}
                             >
                               {member.name}
                             </h3>
@@ -144,20 +146,23 @@ export default function TeamMembers() {
                               className="p-3.5 rounded-full bg-black/5 hover:bg-black/10 hover:text-[#0a66c2] dark:bg-white/5 dark:hover:bg-white/10 text-black dark:text-white transition-colors cursor-pointer"
                               aria-label={`${member.name}'s LinkedIn`}
                             >
-                              <FaLinkedin className="w-5 h-5" strokeWidth={1.5} />
+                              <FaLinkedin
+                                className="w-5 h-5"
+                                strokeWidth={1.5}
+                              />
                             </a>
                           </div>
                         </div>
 
                         {/* ID Card Display */}
-                        <div className="shrink-0 flex flex-col items-center xl:items-end w-full xl:w-auto">
+                        <div className="shrink-0 flex flex-col items-center lg:items-end w-full lg:w-auto">
                           <IDCard member={member} />
-                          <span className="mt-6 text-xs text-black/50 dark:text-white/70 text-center xl:text-right uppercase tracking-wider font-semibold">
-                            <span className="md:hidden">Click</span>
-                            <span className="hidden md:inline">Hover</span> the ID Card for more details
+                          <span className="mt-6 text-xs text-black/50 dark:text-white/70 text-center lg:text-right uppercase tracking-wider font-semibold">
+                            <span className="lg:hidden">Click</span>
+                            <span className="hidden lg:inline">Hover</span> the
+                            ID Card for more details
                           </span>
                         </div>
-                        
                       </div>
                     </div>
                   </div>
