@@ -86,7 +86,7 @@ export default function TeamMembers() {
                 </DialogTrigger>
 
                 {/* Dialog Content */}
-                <DialogContent className="w-[95vw] md:max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border-none shadow-2xl p-0 rounded-3xl max-h-[95vh] overflow-y-auto overflow-x-hidden z-50">
+                <DialogContent className="w-[95vw] md:max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-[#f1f2e1] dark:bg-[#0a0a0a] border-none shadow-2xl p-0 rounded-3xl max-h-[90vh] overflow-y-auto overflow-x-hidden z-50">
                   <DialogTitle className="sr-only">
                     {member.name}&apos;s Profile
                   </DialogTitle>
@@ -116,7 +116,7 @@ export default function TeamMembers() {
                               ID: {member.employeeId}
                             </span>
                             <h3
-                              className={`${roxborough.className} text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-black dark:text-[#fafaf8] leading-tight wrap-break-word`}
+                              className={`${roxborough.className} text-3xl md:text-4xl lg:text-4xl xl:text-[35px] font-bold text-black dark:text-[#fafaf8] leading-tight wrap-break-word`}
                             >
                               {member.name}
                             </h3>
