@@ -9,13 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BrandAssets } from "@/lib/asset";
-
-const brandNameCraft = (
-  <span className={`${roxborough.className} dark:text-[#fafaf8] font-bold`}>
-    {BrandAssets.name}
-  </span>
-);
+import { BrandNameCraft } from "@/components/BrandNameCraft";
 
 const faqs = [
   {
@@ -32,7 +26,7 @@ const faqs = [
   },
   {
     id: 3,
-    question: <>What is it like working with {brandNameCraft}?</>,
+    question: <>What is it like working with <BrandNameCraft/>?</>,
     answer:
       "We believe that our work goes far beyond simply executing a task. When you partner with us, we seek to build a deep, meaningful connection with you and your vision. We don't just sell a service; we focus on curating a collaborative, supportive experience from start to finish. We are your partners in making sure your thoughts take shape exactly as you dreamed.",
   },
@@ -44,7 +38,7 @@ const faqs = [
   },
   {
     id: 5,
-    question: <>How do I get started with {brandNameCraft}?</>,
+    question: <>How do I get started with <BrandNameCraft/>?</>,
     answer:
       "Every great project starts with a simple conversation. Reach out to us through our contact form, and we will schedule a time to connect, discuss your ideas, and see if our crafted approach aligns with your vision",
   },
